@@ -1,0 +1,47 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <!-- Contenu principal -->
+  <mat-sidenav-content>
+    <!-- Carte principale pour la génération de l'e-carte -->
+    <div class="card-container">
+      <!-- Header de la carte -->
+      <header class="header">
+        <h2>Génération de votre e-carte</h2>
+        <p>Tout ce que vous devez savoir avant de générer votre carte virtuelle.</p>
+      </header>
+
+      <!-- Description de la carte -->
+      <p class="description">
+        La e-carte est un instrument de paiement électronique moderne qui vous offre la possibilité
+        de régler facilement vos achats en ligne, que ce soit pour des transactions nationales ou 
+        internationales. Elle vous permet d'effectuer vos paiements en Dirhams ou en devises étrangères,
+        grâce à un numéro de carte bancaire dématérialisée sécurisé. Cette carte, entièrement virtuelle,
+        est prépayée, rechargeable à votre convenance et reste valable pendant une année entière. 
+        Elle peut être renouvelée sur simple demande, garantissant ainsi une flexibilité d'utilisation. 
+        Accessible exclusivement via votre application BANKATI, elle vous offre un contrôle total et
+        une consultation rapide de vos opérations financières, tout en vous assurant une expérience pratique 
+        et sécurisée.
+      </p>
+      
+      <!-- Bouton pour générer la carte -->
+      <button mat-raised-button color="primary" (click)="generateCard()">
+        J'accepte les termes du contrat
+      </button>
+
+      <!-- Affichage des erreurs ou succès -->
+      <div *ngIf="errorMessage" class="error">
+        <p>{{ errorMessage }}</p>
+      </div>
+      <div *ngIf="eCarte">
+        <h3>Carte générée avec succès :</h3>
+        <pre>{{ eCarte | json }}</pre>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,9 +1,49 @@
-<div class="container">
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
 
-    <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
-    <h2>Profile Information</h2>
-    <p>Name: {{profileInfo?.ourUsers?.nom}}</p>
-    <p>Email: {{profileInfo?.ourUsers?.email}}</p>
-    <p>City: {{profileInfo?.ourUsers?.adresse}}</p>
-    <button *ngIf ="profileInfo?.ourUsers?.role === 'ADMIN'"  (click)="updateProfile(profileInfo?.ourUsers?.id)">Update Profile</button>
-</div>
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+
+  <!-- Contenu principal -->
+  <mat-sidenav-content>
+    <div class="dashboard-grid">
+      <!-- Carte: Mes Comptes -->
+      <mat-card class="dashboard-card">
+        <img src="assets/comptes.png" alt="Mes Comptes" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Mes Comptes</mat-card-title>
+      </mat-card>
+
+      <!-- Carte: Mes Moyens de Paiement -->
+      <mat-card class="dashboard-card">
+        <img src="assets/moyen.png" alt="Moyens de Paiement" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Mes Moyens de Paiement</mat-card-title>
+      </mat-card>
+
+      <!-- Carte: Virements -->
+      <mat-card class="dashboard-card">
+        <img src="assets/virement1.png" alt="Virements" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Virements</mat-card-title>
+      </mat-card>
+
+      <!-- Carte: Transferts -->
+      <mat-card class="dashboard-card">
+        <img src="assets/transfert.jpg" alt="Transferts" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Transferts</mat-card-title>
+      </mat-card>
+
+      <!-- Carte: Paiements -->
+      <mat-card class="dashboard-card" routerLink="/generCarte" style="cursor: pointer;">
+        <img src="assets/Cartes.png" alt="Paiements" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Paiements</mat-card-title>
+      </mat-card>
+
+      <!-- Carte: Achat de Recharges -->
+      <mat-card class="dashboard-card">
+        <img src="assets/sim1.png" alt="Achat de Recharges" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Achat de Recharges</mat-card-title>
+      </mat-card>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

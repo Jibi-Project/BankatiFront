@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  isSuccessful = false;
+  isSignUpFailed = false;
   formData: any = {
     nom: '',
     email: '',

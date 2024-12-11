@@ -49,7 +49,7 @@ export class UpdateUserComponent {
       if(!token){
         throw new Error("Token not found")
       }
-      const res = await this.userService.updateUSer(this.userId, this.userData, token);
+      const res = await this.userService.updateUser(this.userId, this.userData, token);
       console.log(res)
 
       if(res.statusCode === 200){

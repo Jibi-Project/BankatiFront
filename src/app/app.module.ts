@@ -9,7 +9,22 @@ import { UpdateUserComponent } from './user-auth/update-user/update-user.compone
 import { UserslistComponent } from './user-auth/userslist/userslist.component';
 import { ProfileComponent } from './user-auth/profile/profile.component';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { HttpClientModule } from '@angular/common/http'; // Import nécessaire
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SidenavComponent } from './sidenav/sidenav/sidenav.component'; // Import nécessaire
+import { MatListModule } from '@angular/material/list'; // Pour <mat-nav-list>
+import { MatDividerModule } from '@angular/material/divider'; // Pour <mat-divider>
+import { MatIconModule } from '@angular/material/icon'; // Pour <mat-icon
+import { MatButtonModule } from '@angular/material/button'; // Si vous utilisez des boutons
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card'; // Module pour <mat-card>
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HeaderComponent } from './header/header.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { GenerCarteComponent } from './gener-carte/gener-carte.component';
+import { UsersService } from './service/users.service';
+import { AuthInterceptor } from './service/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,15 +34,34 @@ import { HttpClientModule } from '@angular/common/http'; // Import nécessaire
     UpdateUserComponent,
     UserslistComponent,
     ProfileComponent,
+    SidenavComponent,
+    HeaderComponent,
+    GenerCarteComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule, // Ajouter MatListModule
+    MatDividerModule, // Ajouter MatDividerModule
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    RouterModule,
+    MatToolbarModule,
+    MatMenuModule
   ],
   providers: [
-    provideClientHydration()
+    UsersService,  // Fournir le service d'utilisateur pour l'authentification
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor, // Déclare l'intercepteur
+      multi: true, // Cela permet d'ajouter plusieurs intercepteurs si nécessaire
+    },
   ],
   bootstrap: [AppComponent]
 })

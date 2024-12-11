@@ -5,24 +5,24 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
+  isLoggedIn: boolean = false;
+  isLoginFailed: boolean = false;
+
   constructor(
     private readonly usersService: UsersService,
     private router: Router
-  ) { }
-
-
-  email: string = ''
-  password: string = ''
-  errorMessage: string = ''
+  ) {}
 
   async handleSubmit() {
-
     if (!this.email || !this.password) {
-      this.showError("Email and Password is required");
-      return
+      this.showError("L'email et le mot de passe sont requis.");
+      return;
     }
 
     try {
@@ -32,23 +32,25 @@ export class LoginComponent {
         console.log('Token:', response.token);
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
+        this.isLoggedIn = true;
+        this.isLoginFailed = false;
         this.router.navigate(['/profile']);
         console.log('Navigating to profile...');
       } else {
         this.showError(response.message);
+        this.isLoginFailed = true;
       }
     } catch (error: any) {
       console.error('Error during login:', error);
-      this.showError(error.message);
+      this.showError("Erreur lors de la connexion.");
+      this.isLoginFailed = true;
     }
-    
-
   }
 
-  showError(mess: string) {
-    this.errorMessage = mess;
+  showError(message: string) {
+    this.errorMessage = message;
     setTimeout(() => {
-      this.errorMessage = ''
-    }, 3000)
+      this.errorMessage = '';
+    }, 3000);
   }
 }

@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles for the application */
+
+/* Import Material Design core styles (if required via link in HTML) */
+/* Since CSS doesn't support @use or @include, you need to ensure these styles are imported separately */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Root styles */
+:root {
+    /* Replace SCSS variables with hardcoded values */
+    --primary-color: #0078d4; /* Example color for primary */
+    --tertiary-color: #0050b3; /* Example color for tertiary */
+    --font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Material Design Components - manually include if needed */
+/* Include generated styles manually from Angular Material's prebuilt themes */
+
+/* General styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-family);
+}
+.sidenav-container {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  mat-sidenav-content {
+    flex: 1;
+  }

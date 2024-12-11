@@ -1,0 +1,40 @@
+<mat-toolbar>
+  <mat-toolbar-row class="justify-content-between">
+    <!-- Bouton pour ouvrir le sidebar -->
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>format_list_bulleted</mat-icon>
+    </button>
+
+    <!-- Section du logo centrée -->
+    <div class="logo-container">
+      <img src="assets/BANKATI1.png" alt="Logo" class="logo" />
+    </div>
+
+    <!-- Section de droite avec l'icône de notification et l'utilisateur -->
+    <div class="d-flex align-items-center ml-auto">
+      <!-- Icône de notification -->
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+
+      <!-- Bouton utilisateur avec menu déroulant -->
+      <button mat-button [matMenuTriggerFor]="menu" class="user d-flex align-items-center">
+        <img src="./assets/user.png" alt="" class="user-image mr-1" />
+        {{username}}
+        <mat-icon class="ml-1">keyboard_arrow_down</mat-icon>
+      </button>
+
+      <!-- Menu déroulant -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- Barre orange attachée en bas -->
+<div class="header-bottom-bar">
+</div>

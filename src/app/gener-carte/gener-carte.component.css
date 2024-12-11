@@ -1,4 +1,39 @@
-/* Conteneur principal */
+.card-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .header {
+    background-color: #ca7c06;  /* Couleur de fond pour le header */
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .header p {
+    font-size: 16px;
+    margin: 5px 0 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  /* Conteneur principal */
 .sidenav-container {
     height: 100vh; /* Hauteur de l'écran */
     display: flex;
@@ -221,3 +256,16 @@ body, mat-sidenav-content {
     height: 90px;        /* Ajuste la hauteur à votre préférence (par exemple 200px) */
     object-fit: cover;    /* Ajuste l'image pour remplir le conteneur tout en conservant son ratio d'aspect */
   }
+  mat-sidenav-container {
+    position: relative;
+    height: 200vh;  /* Fixe la hauteur à 100% de la fenêtre */
+  }
+  
+  mat-sidenav-content {
+    position: absolute;
+    bottom: 0; /* Place le contenu en bas de la page */
+    /* S'assurer que le contenu prend toute la largeur */
+    padding: 20px;
+  }
+  
+  

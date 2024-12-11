@@ -6,15 +6,17 @@ import { adminGuard, usersGuard } from './service/users.guard';
 import { ProfileComponent } from './user-auth/profile/profile.component';
 import { UpdateUserComponent } from './user-auth/update-user/update-user.component';
 import { UserslistComponent } from './user-auth/userslist/userslist.component';
+import { GenerCarteComponent } from './gener-carte/gener-carte.component';  // Ajustez le chemin selon la structure de votre projet
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent, canActivate: [adminGuard]},
+  {path: 'register', component: RegisterComponent, canActivate: [usersGuard]},
   {path: 'profile', component: ProfileComponent, canActivate: [usersGuard]},
   {path: 'update/:id', component: UpdateUserComponent, canActivate: [adminGuard]},
   {path: 'users', component: UserslistComponent, canActivate:[adminGuard]},
-  {path: '**', component: LoginComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'generCarte', component: GenerCarteComponent ,canActivate: [usersGuard]},
+
 ];
 
 @NgModule({

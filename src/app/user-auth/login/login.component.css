@@ -1,57 +1,101 @@
-.container {
-    max-width: 500px;
-    margin: 50px auto;
+.card-container {
+    max-width: 400px;
     padding: 20px;
-    border: 1px solid #ccc;
+    margin: 0 auto;
+    border: 1px solid #6b4226; /* Orange foncé */
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(228, 219, 219, 0.2);
+}
+
+.profile-img-card {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    border: 3px solid #b85c38; /* Orange foncé */
+}
+
+.form-control {
+    border: 1px solid #b85c38; /* Orange foncé */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    }
-    
-    .form-group {
-    margin-bottom: 20px;
-    }
-    
-    .form-group label {
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh; /* Prend toute la hauteur de la fenêtre */
+    margin-top: 50px; /* Ajustez cette valeur pour déplacer plus bas */
+}
+
+.card-container {
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #6b4226; /* Orange foncé */
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(212, 207, 207, 0.2);
+}
+
+label {
     display: block;
-    font-weight: bold;
-    font-size: 20px;
-    }
-    
-    .form-group input {
-    width: 95%;
-    padding: 13px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    }
-    
-    button[type="submit"] {
+    margin-top: 10px;
+}
+
+.card-container.card {
+    max-width: 400px !important;
+    padding: 40px 40px;
+}
+
+.card {
+    background-color: #f7f7f7;
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(238, 232, 232, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
     display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 20px;
-    color: #fff;
-    background-color: #007bff;
+    border-radius: 50%;
+    border: 3px solid #b85c38; /* Orange foncé */
+}
+
+/* Style du bouton "Se connecter" */
+button {
+    background-color: #b85c38; /* Orange foncé */
+    color: white;
     border: none;
     border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    }
-    
-    button[type="submit"]:hover {
-    background-color: #064e9c;
-    }
-    
-    .error-message {
-    color: #dc3545;
-    font-size: 20px;
-    margin: 10px;
-    text-align: center;
-    }
-    
+}
+
+/* Effet au survol */
+button:hover {
+    background-color: #6b4226; /* Orange plus foncé */
+}
+
+/* Effet au clic */
+button:active {
+    background-color: #5a341e; /* Encore plus foncé pour le clic */
+}
+
+/* Lien "Inscrivez-vous ici" en orange clair */
+a {
+    color: #ffb84d; /* Orange clair */
+    text-decoration: none;
+}
+
+/* Effet au survol du lien */
+a:hover {
+    color: #ff9f00; /* Orange encore plus clair au survol */
+}
