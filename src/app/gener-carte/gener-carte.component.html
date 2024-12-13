@@ -1,5 +1,5 @@
 <app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar -->
   <mat-sidenav #sidenav mode="side" opened>
@@ -13,9 +13,8 @@
       <!-- Header de la carte -->
       <header class="header">
         <h2>Génération de votre e-carte</h2>
-        <p>Tout ce que vous devez savoir avant de générer votre carte virtuelle.</p>
       </header>
-
+      <p>Tout ce que vous devez savoir avant de générer votre carte virtuelle.</p>
       <!-- Description de la carte -->
       <p class="description">
         La e-carte est un instrument de paiement électronique moderne qui vous offre la possibilité
@@ -30,18 +29,19 @@
       </p>
       
       <!-- Bouton pour générer la carte -->
-      <button mat-raised-button color="primary" (click)="generateCard()">
-        J'accepte les termes du contrat
-      </button>
-
-      <!-- Affichage des erreurs ou succès -->
-      <div *ngIf="errorMessage" class="error">
-        <p>{{ errorMessage }}</p>
-      </div>
-      <div *ngIf="eCarte">
-        <h3>Carte générée avec succès :</h3>
-        <pre>{{ eCarte | json }}</pre>
-      </div>
-    </div>
+      <button mat-raised-button 
+        [style.background-color]="'rgb(189, 189, 189)'" 
+        [style.color]="'white'" 
+        [style.border]="'none'" 
+        [style.padding]="'10px 20px'" 
+        [style.font-size]="'16px'" 
+        [style.border-radius]="'5px'" 
+        [style.cursor]="'pointer'" 
+        [style.transition]="'background-color 0.3s ease'"
+        (click)="generateCard()">
+  J'accepte les termes du contrat
+</button>
+</div>
+   
   </mat-sidenav-content>
 </mat-sidenav-container>

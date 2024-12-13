@@ -1,0 +1,40 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="card-page">
+      <!-- Section de la carte -->
+      <div *ngIf="eCarte" class="card-container">
+        <div class="card-header">
+            <span class="card-title">
+                <span style="color: #ca7c06;">BAN</span>
+                <span style="color: #91959e;">KATI</span>
+            </span>
+            
+            
+          <p class="card-expiration">CVV : {{ eCarte.cvv }}</p>
+        </div>
+        <div class="card-body">
+          <p class="card-number">{{ eCarte.numeroCarte }}</p>
+          <p class="card-expiration">Expiry : {{ eCarte.dateExpiration }}</p>
+          <p class="card-holder">
+            {{ profileInfo?.ourUsers?.prenom }} {{ profileInfo?.ourUsers?.nom }}
+          </p>
+        </div>
+        <div class="moncarte-logo">
+            <span>Macarte</span>
+          </div>
+      </div>
+
+      <!-- Message d'erreur si aucune carte -->
+      <div *ngIf="!eCarte" class="error">
+        <p>Les informations de la carte ne sont pas disponibles.</p>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

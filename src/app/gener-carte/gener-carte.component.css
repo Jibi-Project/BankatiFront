@@ -267,5 +267,95 @@ body, mat-sidenav-content {
     /* S'assurer que le contenu prend toute la largeur */
     padding: 20px;
   }
+  .success-container {
+    text-align: center;
+    margin-top: 100px;
+  }
   
+  .icon-container {
+    font-size: 80px;
+    color: #84df84; /* Couleur verte pour la confirmation */
+    margin-bottom: 20px;
+  }
   
+  .success-message {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 25px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  .custom-button {
+    background-color: #ca7c06; /* Vert personnalisé */
+    color: white; /* Texte blanc */
+  }
+  
+  .custom-button:hover {
+    background-color: #ca7c06; /* Vert légèrement plus foncé au survol */
+  } 
+  /* Positionnement global */
+.card-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white; /* Fond blanc */
+  color: black;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+
+
+/* En-tête de la carte */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bank-logo {
+  width: 50px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Contenu de la carte */
+.card-body {
+  margin-top: 10px;
+}
+
+.card-number {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.card-expiration,
+.card-holder {
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+/* Logo Visa */
+.visa-logo {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+}
+
+.visa-logo img {
+  width: 50px;
+}
+
+/* Message d'erreur */
+.error {
+  color: red;
+  font-weight: bold;
+}

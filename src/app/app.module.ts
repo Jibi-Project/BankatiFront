@@ -25,7 +25,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { GenerCarteComponent } from './gener-carte/gener-carte.component';
 import { UsersService } from './service/users.service';
 import { AuthInterceptor } from './service/auth.interceptor';
-
+import { CardDetailsComponent } from './card-details/card-details.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,8 @@ import { AuthInterceptor } from './service/auth.interceptor';
     SidenavComponent,
     HeaderComponent,
     GenerCarteComponent,
+    CardDetailsComponent,
+    DialogContentComponent,
     
   ],
   imports: [
@@ -53,7 +58,9 @@ import { AuthInterceptor } from './service/auth.interceptor';
     MatCardModule,
     RouterModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [
     UsersService,  // Fournir le service d'utilisateur pour l'authentification

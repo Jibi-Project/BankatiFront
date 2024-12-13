@@ -7,6 +7,7 @@ import { ProfileComponent } from './user-auth/profile/profile.component';
 import { UpdateUserComponent } from './user-auth/update-user/update-user.component';
 import { UserslistComponent } from './user-auth/userslist/userslist.component';
 import { GenerCarteComponent } from './gener-carte/gener-carte.component';  // Ajustez le chemin selon la structure de votre projet
+import { CardDetailsComponent } from './card-details/card-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'update/:id', component: UpdateUserComponent, canActivate: [adminGuard]},
   {path: 'users', component: UserslistComponent, canActivate:[adminGuard]},
   { path: 'generCarte', component: GenerCarteComponent ,canActivate: [usersGuard]},
+  { path: 'card-details', component: CardDetailsComponent },
 
 ];
 
