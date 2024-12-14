@@ -33,8 +33,8 @@ export class UpdateUserComponent {
 
       try {
         let userDataResponse = await this.userService.getUsersById(this.userId, token)
-        const {nom, email, role, adresse} = userDataResponse.ourUsers
-        this.userData = {nom, email, role, adresse};
+        const {nom,prenom, email, telephone, adresse} = userDataResponse.ourUsers
+        this.userData = {nom, prenom,email, telephone, adresse};
         
       } catch (error:any) {
         this.showError(error.message);
@@ -52,8 +52,8 @@ export class UpdateUserComponent {
       const res = await this.userService.updateUser(this.userId, this.userData, token);
       console.log(res)
 
-      if(res.statusCode === 200){
-        this.router.navigate(['/users'])
+      if(res.statutCode === 200){
+        this.router.navigate(['/agent'])
       }else{
         this.showError(res.message)
       }
@@ -70,5 +70,9 @@ export class UpdateUserComponent {
     setTimeout(() => {
       this.errorMessage = ''
     }, 3000)
+  }
+
+  Annuler() {
+    this.router.navigate(['/agent']);
   }
 }

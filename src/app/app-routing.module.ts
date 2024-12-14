@@ -8,6 +8,7 @@ import { UpdateUserComponent } from './user-auth/update-user/update-user.compone
 import { UserslistComponent } from './user-auth/userslist/userslist.component';
 import { GenerCarteComponent } from './gener-carte/gener-carte.component';  // Ajustez le chemin selon la structure de votre projet
 import { CardDetailsComponent } from './card-details/card-details.component';
+import { ListClientsComponent } from './agent/list-clients/list-clients.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'users', component: UserslistComponent, canActivate:[adminGuard]},
   { path: 'generCarte', component: GenerCarteComponent ,canActivate: [usersGuard]},
   { path: 'card-details', component: CardDetailsComponent },
+  {path:'agent',component:ListClientsComponent}
 
 ];
 

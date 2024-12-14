@@ -1,0 +1,27 @@
+<mat-nav-list>
+    <!-- Conteneur du nom de l'utilisateur -->
+    <div class="user-info-container py-3 px-4">
+      <span class="user-name">{{profileInfo?.ourUsers?.prenom}} {{profileInfo?.ourUsers?.nom}}</span>
+    </div>
+  
+    <mat-divider></mat-divider>
+  
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
+      <mat-icon>dashboard</mat-icon> Accueil
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/login">
+      <mat-icon>supervisor_account</mat-icon> Clients
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/generCarte">
+      <mat-icon>price_check</mat-icon> Comptes 
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/total-demandes">
+      <mat-icon>mail</mat-icon> something 
+    </a>
+
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/total-demandes">
+      <mat-icon>label</mat-icon> À propos 
+    </a>
+  </mat-nav-list>
+  

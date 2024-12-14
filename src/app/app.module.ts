@@ -29,6 +29,13 @@ import { CardDetailsComponent } from './card-details/card-details.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
+import { ListClientsComponent } from './agent/list-clients/list-clients.component';
+import { TopnavComponent } from './agent/topnav/topnav.component';
+import { LeftnavComponent } from './agent/leftnav/leftnav.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +49,9 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     GenerCarteComponent,
     CardDetailsComponent,
     DialogContentComponent,
+    ListClientsComponent,
+    TopnavComponent,
+    LeftnavComponent,
     
   ],
   imports: [
@@ -60,7 +70,12 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     MatToolbarModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    
   ],
   providers: [
     UsersService,  // Fournir le service d'utilisateur pour l'authentification

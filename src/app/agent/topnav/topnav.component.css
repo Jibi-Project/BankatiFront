@@ -1,0 +1,104 @@
+mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  ul {
+    li {
+      list-style: none;
+    }
+  }
+  button {
+    outline: none;
+    border: 0;
+    background: transparent;
+  }
+  .user {
+    font-size: 14px;
+  }
+  mat-toolbar {
+    background: #ffffff;
+  }
+  .user-image {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    &-icon {
+      height: 18px;
+      font-size: 16px;
+    }
+  }
+  
+  ::ng-deep {
+    .mat-menu-content {
+      width: 160px;
+    }
+  }
+  .notification-icon {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 0 6px;
+    font-size: 12px;
+  }
+  
+  .notifications-dropdown {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .notifications-dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .notifications-dropdown li {
+    padding: 10px;
+    border-bottom: 1px solid #ffffff;
+  }
+  /* Barre orange attachée en bas */
+.header-bottom-bar {
+  background-color: #ca7c06; /* Fond orange */
+  padding: 10px; /* Espacement interne */
+  text-align: center; /* Centrer le contenu */
+  color: white; /* Texte blanc */
+  font-weight: bold; /* Texte en gras */
+  border-top: 2px solid #ca7c06; /* Optionnel : Bordure */
+}
+/* Conteneur du logo */
+/* Conteneur du logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Permet de faire prendre toute la place disponible */
+}
+
+/* Logo */
+.logo {
+  max-height: 220px; /* Augmenter la taille du logo (ajustez selon vos besoins) */
+  max-width: 100%;  /* Assurez-vous que le logo s'adapte à la largeur */
+}
+
+/* Barre orange attachée en bas */
+.header-bottom-bar {
+  background-color: #ca7c06;
+  height: 10px;
+  width: 100%;
+}
+
