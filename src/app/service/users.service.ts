@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
 
-  private BASE_URL = "http://localhost:1010";
+  private BASE_URL = "http://localhost:8222";
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);  // Définir un BehaviorSubject
   public currentUser$: Observable<any> = this.currentUserSubject.asObservable();  // Observable à exposer
 
@@ -15,7 +15,7 @@ export class UsersService {
 
   /** Authentification */
   async login(email: string, password: string): Promise<any> {
-    const url = `${this.BASE_URL}/auth/login`;
+    const url = `${this.BASE_URL}/users/auth/login`;
     try {
       const response = await this.http.post<any>(url, { email, password }).toPromise(); // Pas besoin d'async/await ici, mais cela fonctionne
       this.setSession(response);  // Sauvegarder les informations d'utilisateur dans le sessionStorage ou localStorage
@@ -78,7 +78,7 @@ export class UsersService {
 
   /** API Calls */
   async register(userData: any, token: string): Promise<any> {
-    const url = `${this.BASE_URL}/auth/register`;
+    const url = `${this.BASE_URL}/users/auth/register`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
@@ -91,7 +91,7 @@ export class UsersService {
   }
 
   async getAllUsers(token: string): Promise<any> {
-    const url = `${this.BASE_URL}/admin/get-all-users`;
+    const url = `${this.BASE_URL}/users/admin/get-all-users`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
@@ -104,7 +104,7 @@ export class UsersService {
   }
 
   async getYourProfile(token: string): Promise<any> {
-    const url = `${this.BASE_URL}/adminuser/get-profile`;
+    const url = `${this.BASE_URL}/users/adminuser/get-profile`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
@@ -117,7 +117,7 @@ export class UsersService {
   }
 
   async getUsersById(userId: string, token: string): Promise<any> {
-    const url = `${this.BASE_URL}/admin/get-users/${userId}`;
+    const url = `${this.BASE_URL}/users/admin/get-users/${userId}`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
@@ -130,7 +130,7 @@ export class UsersService {
   }
 
   async deleteUser(userId: string, token: string): Promise<any> {
-    const url = `${this.BASE_URL}/admin/delete/${userId}`;
+    const url = `${this.BASE_URL}/users/admin/delete/${userId}`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });
@@ -143,7 +143,7 @@ export class UsersService {
   }
 
   async updateUser(userId: string, userData: any, token: string): Promise<any> {
-    const url = `${this.BASE_URL}/admin/update/${userId}`;
+    const url = `${this.BASE_URL}/users/admin/update/${userId}`;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
     });

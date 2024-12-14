@@ -24,33 +24,50 @@ export class LoginComponent {
       this.showError("L'email et le mot de passe sont requis.");
       return;
     }
-
+  
     try {
       const response = await this.usersService.login(this.email, this.password);
       console.log('Response received:', response);
+  
       if (response.statutCode === 200) {
         console.log('Token:', response.token);
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('role', response.role);
+        
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('role', response.role);
+        }
+  
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigate(['/profile']);
-        console.log('Navigating to profile...');
+  
+        this.router.navigate(['/profile']).then(() => {
+          console.log('Navigated to profile successfully.');
+        }).catch((err) => {
+          console.error('Navigation failed:', err);
+          this.showError("Erreur lors de la redirection.");
+        });
       } else {
-        this.showError(response.message);
+        this.showError(response.message || "Erreur d'authentification.");
         this.isLoginFailed = true;
       }
     } catch (error: any) {
       console.error('Error during login:', error);
-      this.showError("Erreur lors de la connexion.");
+      if (error.status === 0) {
+        this.showError("Connexion au serveur impossible. Vérifiez votre réseau.");
+      } else if (error.error?.message) {
+        this.showError(error.error.message);
+      } else {
+        this.showError("Une erreur inattendue est survenue.");
+      }
       this.isLoginFailed = true;
     }
   }
 
-  showError(message: string) {
+  showError(message: string) { // Ensure it's here, inside the class
     this.errorMessage = message;
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
   }
+  
 }

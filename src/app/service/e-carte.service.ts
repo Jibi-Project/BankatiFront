@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ECarteService {
-  private BASE_URL = "http://localhost:1010";
+  private BASE_URL = "http://localhost:8222";
 
   constructor(private http: HttpClient) { }
 
