@@ -10,6 +10,7 @@ import { GenerCarteComponent } from './gener-carte/gener-carte.component';  // A
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { ListClientsComponent } from './agent/list-clients/list-clients.component';
 import { ProfileUserComponent } from './user-auth/profile-user/profile-user.component';
+import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'card-details', component: CardDetailsComponent },
   {path:'agent',component:ListClientsComponent},
   {path:'userprofile',component:ProfileUserComponent},
-  {path:'listeClient',component:ListClientsComponent}
+  {path:'listeClient',component:ListClientsComponent},
+  {path:"agentprofile",component:ProfileAgentComponent}
 
 ];
 

@@ -1,0 +1,46 @@
+/* General Card Styling */
+.profile-card {
+    width: 400px;
+    margin: 20px auto ;
+    padding: 20px;
+    text-align: left;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Profile Header */
+  .profile-header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .profile-icon {
+    font-size: 20px;
+    color: #ff5722;
+  }
+  
+  .profile-header h2 {
+    margin: 10px 0;
+    color: #333;
+
+  }
+  
+  /* Section Title */
+  .section-title {
+    color: #ff5722;
+    margin: 10px 0;
+    font-size: 18px;
+
+  }
+  
+  /* Content Styling */
+  mat-card-content p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  mat-card-content em {
+    font-style: italic;
+    color: #000;
+  }
+  

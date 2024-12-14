@@ -31,5 +31,8 @@ export class HeaderComponent implements OnInit {
   onLogout(): void {
     this.authService.logout();
   }
+  goProfile(): void {
+    this.router.navigate(['/agentprofile']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
+  }
 
 }

@@ -37,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileUserComponent } from './user-auth/profile-user/profile-user.component';
+import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +55,7 @@ import { ProfileUserComponent } from './user-auth/profile-user/profile-user.comp
     TopnavComponent,
     LeftnavComponent,
     ProfileUserComponent,
+    ProfileAgentComponent,
     
   ],
   imports: [
