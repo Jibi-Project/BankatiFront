@@ -23,11 +23,13 @@ export class HeaderComponent implements OnInit {
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
   }
-  logout(): void {
-    this.authService.logout();
-  }
+
   goBack(): void {
     this.router.navigate(['/']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
+  }
+
+  onLogout(): void {
+    this.authService.logout();
   }
 
 }

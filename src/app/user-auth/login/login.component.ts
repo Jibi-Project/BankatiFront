@@ -31,21 +31,37 @@ export class LoginComponent {
   
       if (response.statutCode === 200) {
         console.log('Token:', response.token);
-        
-        if (typeof window !== 'undefined') {
+  
+        // Ensure localStorage is only accessed in the browser
+        if (typeof window !== 'undefined' && localStorage) {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
+        } else {
+          console.warn('localStorage is not available.');
         }
   
         this.isLoggedIn = true;
         this.isLoginFailed = false;
   
-        this.router.navigate(['/profile']).then(() => {
-          console.log('Navigated to profile successfully.');
-        }).catch((err) => {
-          console.error('Navigation failed:', err);
-          this.showError("Erreur lors de la redirection.");
-        });
+        // Redirect based on user role
+        if (response.role === 'USER') {
+          this.router.navigate(['/profile']).then(() => {
+            console.log('Navigated to profile successfully.');
+          }).catch((err) => {
+            console.error('Navigation to profile failed:', err);
+            this.showError("Erreur lors de la redirection vers le profil.");
+          });
+        } else if (response.role === 'ADMIN') {
+          this.router.navigate(['/agent']).then(() => {
+            console.log('Navigated to agent successfully.');
+          }).catch((err) => {
+            console.error('Navigation to agent failed:', err);
+            this.showError("Erreur lors de la redirection vers l'agent.");
+          });
+        } else {
+          console.warn('Unknown role:', response.role);
+          this.showError("Rôle inconnu. Accès refusé.");
+        }
       } else {
         this.showError(response.message || "Erreur d'authentification.");
         this.isLoginFailed = true;
@@ -62,6 +78,7 @@ export class LoginComponent {
       this.isLoginFailed = true;
     }
   }
+  
 
   showError(message: string) { // Ensure it's here, inside the class
     this.errorMessage = message;

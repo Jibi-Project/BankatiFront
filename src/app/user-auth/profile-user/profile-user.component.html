@@ -1,0 +1,31 @@
+<app-topnav (toggleSidebarForMe)="sidenav.toggle()"></app-topnav>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-leftnav></app-leftnav>
+  </mat-sidenav>
+
+  <mat-card class="profile-card">
+    <!-- Profile Image -->
+    <div class="profile-header">
+      <mat-icon class="profile-icon" aria-hidden="false">account_circle</mat-icon>
+      <h2>{{profileInfo?.ourUsers?.nom}} {{profileInfo?.ourUsers?.prenom}}</h2>
+    </div>
+    <hr/>
+    <!-- Personal Information -->
+    <mat-card-content>
+     <h3 class="section-title">Informations personnelles</h3>
+      <p><strong>Adresse :</strong> <em>{{profileInfo?.ourUsers?.adresse}}</em></p>
+    </mat-card-content>
+    <hr/>
+    <!-- Contact Information -->
+    <mat-card-content>
+      <h3 class="section-title">Contact</h3>
+      <p><strong>Téléphone :</strong> <em>{{profileInfo?.ourUsers?.telephone}}</em></p>
+      <p><strong>E-mail :</strong> <em>{{profileInfo?.ourUsers?.email}}</em></p>
+    </mat-card-content>
+  </mat-card>
+  
+
+</mat-sidenav-container>

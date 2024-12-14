@@ -30,4 +30,8 @@ export class TopnavComponent implements OnInit {
     this.router.navigate(['/']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
   }
 
+  goProfile(): void {
+    this.router.navigate(['/userprofile']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
+  }
+
 }
