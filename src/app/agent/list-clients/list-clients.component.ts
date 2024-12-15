@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-clients.component.css']
 })
 export class ListClientsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'email', 'nom', 'prenom', 'adresse', 'actions'];
+  displayedColumns: string[] = ['id', 'email', 'nom', 'prenom', 'status', 'actions'];
   dataSource = new MatTableDataSource<User>([]);
   errorMessage: string = '';
 
@@ -51,6 +51,21 @@ export class ListClientsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  toggleLock(user: any): void {
+    const lock = user.accountNonLocked; // If account is unlocked, lock it
+    this.yourService.toggleLockUser(user.id, lock).subscribe({
+      next: (response) => {
+        user.accountNonLocked = !lock; // Toggle the lock status in the UI
+        alert(response.message);
+      },
+      error: (err) => {
+        console.error(err);
+        alert('An error occurred while toggling the account lock status.');
+      }
+    });
+  }
+  
+
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -83,4 +98,5 @@ export interface User {
   prenom: string;
   adresse: string;
   role: string;
+  accountNonLocked:boolean;
 }

@@ -8,10 +8,18 @@ import { Router } from '@angular/router';
 export class UsersService {
 
   private BASE_URL = "http://localhost:8222";
+  private apiUrl = 'http://localhost:8222/users/admin'; // Base URL for your API
+
+
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);  // Définir un BehaviorSubject
   public currentUser$: Observable<any> = this.currentUserSubject.asObservable();  // Observable à exposer
 
   constructor(private http: HttpClient,private router: Router) { }
+
+  toggleLockUser(userId: number, lock: boolean): Observable<any> {
+    const endpoint = lock ? `/lock/${userId}` : `/unlock/${userId}`;
+    return this.http.put(`${this.apiUrl}${endpoint}`, {});
+  }
 
   /** Authentification */
   async login(email: string, password: string): Promise<any> {
