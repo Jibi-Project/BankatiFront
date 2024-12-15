@@ -34,5 +34,8 @@ export class HeaderComponent implements OnInit {
   goProfile(): void {
     this.router.navigate(['/agentprofile']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
   }
+  goSecurity(): void {
+    this.router.navigate(['/changepwd2u']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
+  }
 
 }

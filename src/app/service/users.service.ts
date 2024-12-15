@@ -190,5 +190,18 @@ export class UsersService {
     return null;
   }
   
+  changePassword(oldPassword: string, newPassword: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('token')}` // Assumes the JWT is stored in localStorage
+    });
+
+    const body = {
+      oldPassword: oldPassword,
+      newPassword: newPassword
+    };
+
+    return this.http.post(`${this.BASE_URL}/users/change-password`, body, { headers });
+  }
   
 }

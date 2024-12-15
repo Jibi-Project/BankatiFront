@@ -11,6 +11,8 @@ import { CardDetailsComponent } from './card-details/card-details.component';
 import { ListClientsComponent } from './agent/list-clients/list-clients.component';
 import { ProfileUserComponent } from './user-auth/profile-user/profile-user.component';
 import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
+import { ChangepasswordComponent } from './user-auth/changepassword/changepassword.component';
+import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,7 +26,9 @@ const routes: Routes = [
   {path:'agent',component:ListClientsComponent},
   {path:'userprofile',component:ProfileUserComponent},
   {path:'listeClient',component:ListClientsComponent},
-  {path:"agentprofile",component:ProfileAgentComponent}
+  {path:"agentprofile",component:ProfileAgentComponent},
+  {path:"changepwd",component:ChangepasswordComponent},
+  {path:"changepwd2u",component:Changepassword2UComponent}
 
 ];
 

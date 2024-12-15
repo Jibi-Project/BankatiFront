@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { ProfileUserComponent } from './user-auth/profile-user/profile-user.component';
 import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
+import { ChangepasswordComponent } from './user-auth/changepassword/changepassword.component';
+import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +59,8 @@ import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.c
     LeftnavComponent,
     ProfileUserComponent,
     ProfileAgentComponent,
+    ChangepasswordComponent,
+    Changepassword2UComponent,
     
   ],
   imports: [
@@ -79,6 +84,7 @@ import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.c
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
+    ReactiveFormsModule
     
   ],
   providers: [
