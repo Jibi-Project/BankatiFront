@@ -15,6 +15,7 @@ import { ChangepasswordComponent } from './user-auth/changepassword/changepasswo
 import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
 import { FactureComponent } from './factures/facture/facture.component';
 import { CreancierDetailsComponent } from './factures/creancier-details/creancier-details.component';
+import { VirementComponent } from './factures/virement/virement.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path:"changepwd2u",component:Changepassword2UComponent},
   {path:"facture",component:FactureComponent},
   { path: 'creancier-details', component: CreancierDetailsComponent },
+  {path:"virement",component:VirementComponent}
 
 
 ];

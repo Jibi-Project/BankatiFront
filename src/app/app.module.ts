@@ -43,6 +43,7 @@ import { ChangepasswordComponent } from './user-auth/changepassword/changepasswo
 import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
 import { FactureComponent } from './factures/facture/facture.component';
 import { CreancierDetailsComponent } from './factures/creancier-details/creancier-details.component';
+import { VirementComponent } from './factures/virement/virement.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { CreancierDetailsComponent } from './factures/creancier-details/creancie
     Changepassword2UComponent,
     FactureComponent,
     CreancierDetailsComponent,
+    VirementComponent,
     
   ],
   imports: [

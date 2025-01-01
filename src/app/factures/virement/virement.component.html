@@ -1,0 +1,65 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+ 
+<mat-card>
+    <mat-card-title>Virement</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="virementForm" (ngSubmit)="onSubmit()">
+        <!-- Nom du bénéficiaire -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nom du bénéficiaire</mat-label>
+          <input matInput formControlName="nomBeneficiaire" required />
+          <mat-error *ngIf="virementForm.get('nomBeneficiaire')?.hasError('required')">
+            Ce champ est obligatoire.
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Numéro de compte -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Numéro de compte</mat-label>
+          <input matInput formControlName="numeroCompte" required pattern="[0-9]{10}" />
+          <mat-error *ngIf="virementForm.get('numeroCompte')?.hasError('required')">
+            Ce champ est obligatoire.
+          </mat-error>
+          <mat-error *ngIf="virementForm.get('numeroCompte')?.hasError('pattern')">
+            Numéro de compte invalide (10 chiffres requis).
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Montant -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Montant</mat-label>
+          <input matInput formControlName="montant" type="number" required />
+          <mat-error *ngIf="virementForm.get('montant')?.hasError('required')">
+            Ce champ est obligatoire.
+          </mat-error>
+          <mat-error *ngIf="virementForm.get('montant')?.hasError('min')">
+            Le montant doit être supérieur à 0.
+          </mat-error>
+        </mat-form-field>
+  
+        <!-- Motif -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Motif</mat-label>
+          <textarea matInput formControlName="motif" rows="3"></textarea>
+        </mat-form-field>
+  
+        <!-- Bouton soumettre -->
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit" [disabled]="virementForm.invalid">
+            Envoyer
+          </button>
+          <button mat-button type="button" (click)="onReset()">Réinitialiser</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+
+</mat-sidenav-container>

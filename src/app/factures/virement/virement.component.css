@@ -1,0 +1,25 @@
+.full-width {
+    width: 100%;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  mat-card {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
