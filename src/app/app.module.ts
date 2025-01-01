@@ -41,6 +41,7 @@ import { ProfileUserComponent } from './user-auth/profile-user/profile-user.comp
 import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
 import { ChangepasswordComponent } from './user-auth/changepassword/changepassword.component';
 import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
+import { FactureComponent } from './factures/facture/facture.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { Changepassword2UComponent } from './user-auth/changepassword2-u/changep
     ProfileAgentComponent,
     ChangepasswordComponent,
     Changepassword2UComponent,
+    FactureComponent,
     
   ],
   imports: [

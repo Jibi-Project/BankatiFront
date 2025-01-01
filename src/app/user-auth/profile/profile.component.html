@@ -12,7 +12,7 @@
       <!-- Carte: Mes Comptes -->
       <mat-card class="dashboard-card">
         <img src="assets/comptes.png" alt="Mes Comptes" class="card-icon">
-        <mat-card-title style="font-weight: normal;">Mes Comptes</mat-card-title>
+        <mat-card-title style="font-weight: normal;">Mon Compte</mat-card-title>
       </mat-card>
 
       <!-- Carte: Mes Moyens de Paiement -->
@@ -29,14 +29,14 @@
 
       <!-- Carte: Transferts -->
       <mat-card class="dashboard-card">
-        <img src="assets/transfert.jpg" alt="Transferts" class="card-icon">
-        <mat-card-title style="font-weight: normal;">Transferts</mat-card-title>
+        <img src="assets/crypto.png" alt="Transferts" class="card-icon">
+        <mat-card-title style="font-weight: normal;">Cryptomonnaies        </mat-card-title>
       </mat-card>
 
       <!-- Carte: Paiements -->
       <mat-card class="dashboard-card" routerLink="/generCarte" style="cursor: pointer;">
         <img src="assets/Cartes.png" alt="Paiements" class="card-icon">
-        <mat-card-title style="font-weight: normal;">Paiements</mat-card-title>
+        <mat-card-title style="font-weight: normal;" (click)="goFacture()">Paiement des factures</mat-card-title>
       </mat-card>
 
       <!-- Carte: Achat de Recharges -->

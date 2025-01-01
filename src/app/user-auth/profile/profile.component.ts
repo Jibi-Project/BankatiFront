@@ -40,4 +40,8 @@ export class ProfileComponent implements OnInit {
       this.errorMessage = ''
     }, 3000)
   }
+
+  goFacture(): void {
+    this.router.navigate(['/facture']); // Redirection vers la page d'accueil, ou utilisez window.history.back()
+  }
 }

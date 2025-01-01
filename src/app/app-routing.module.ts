@@ -13,6 +13,7 @@ import { ProfileUserComponent } from './user-auth/profile-user/profile-user.comp
 import { ProfileAgentComponent } from './user-auth/profile-agent/profile-agent.component';
 import { ChangepasswordComponent } from './user-auth/changepassword/changepassword.component';
 import { Changepassword2UComponent } from './user-auth/changepassword2-u/changepassword2-u.component';
+import { FactureComponent } from './factures/facture/facture.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path:'listeClient',component:ListClientsComponent},
   {path:"agentprofile",component:ProfileAgentComponent},
   {path:"changepwd",component:ChangepasswordComponent},
-  {path:"changepwd2u",component:Changepassword2UComponent}
+  {path:"changepwd2u",component:Changepassword2UComponent},
+  {path:"facture",component:FactureComponent}
 
 ];
 
