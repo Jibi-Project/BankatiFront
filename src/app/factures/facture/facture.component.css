@@ -31,3 +31,16 @@
     padding: 5px 0;
   }
   
+  .creancier-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .creancier-img {
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    border-radius: 50%; /* Optional, for circular images */
+    object-fit: cover; /* Ensures proper cropping */
+  }
+  

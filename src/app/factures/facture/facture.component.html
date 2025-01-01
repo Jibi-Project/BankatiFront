@@ -17,8 +17,9 @@
   
       <div class="submenu" *ngIf="category.open">
         <ul>
-          <li *ngFor="let option of category.options">
-            {{ option }}
+          <li *ngFor="let option of category.options" class="creancier-item" (click)="redirectToCreancierDetails(option)">
+            <img [src]="option.img" alt="{{ option.nom }}" class="creancier-img" />
+           <span> {{ option.nom }}</span>
           </li>
         </ul>
       </div>

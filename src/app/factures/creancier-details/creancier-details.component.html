@@ -1,0 +1,48 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+
+<div class="creancier-details">
+    <div class="header">
+      <img [src]="selectedCreancier.img" alt="{{ selectedCreancier.nom }}" class="logo" />
+      <div>
+        <h2>{{ selectedCreancier.nom }}</h2>
+        <p>Paiement Facture {{ selectedCreancier.nom }}</p>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label for="facture-code">Code facture (xxxxx-xxx)</label>
+      <input
+        id="facture-code"
+        type="text"
+        [(ngModel)]="factureCode"
+        placeholder="Enter code"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="montant">Montant (MAD)</label>
+      <input
+        id="montant"
+        type="number"
+        [(ngModel)]="montant"
+        placeholder="Enter montant"
+        required
+      />
+    </div>
+  
+
+  
+    <button (click)="onSubmit()" class="btn btn-primary">SUIVANT</button>
+    <button routerLink="/facture"  class="btn btn-secondary">ANNULER</button>
+  </div>
+  
+  
+</mat-sidenav-container>

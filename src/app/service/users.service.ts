@@ -16,6 +16,11 @@ export class UsersService {
 
   constructor(private http: HttpClient,private router: Router) { }
 
+  private isLocalStorageAvailable(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+  }
+  
+
   toggleLockUser(userId: number, lock: boolean): Observable<any> {
     const endpoint = lock ? `/lock/${userId}` : `/unlock/${userId}`;
     return this.http.put(`${this.apiUrl}${endpoint}`, {});
@@ -35,7 +40,7 @@ export class UsersService {
 
   // Méthode pour enregistrer l'utilisateur dans le sessionStorage ou localStorage
   private setSession(userData: any) {
-    if (typeof localStorage !== 'undefined') {
+    if (this.isLocalStorageAvailable()) {
       localStorage.setItem('token', userData.token);  // Sauvegarde du token dans le localStorage
       localStorage.setItem('role', userData.role);  // Sauvegarde du rôle de l'utilisateur
       this.currentUserSubject.next(userData);  // Mettre à jour l'utilisateur courant
@@ -44,7 +49,7 @@ export class UsersService {
 
   // Méthode pour la déconnexion
   logout(): void {
-    if (typeof localStorage !== 'undefined') {
+    if (this.isLocalStorageAvailable()) {
       // Supprimer les informations du localStorage
       localStorage.removeItem('token');
       localStorage.removeItem('role');
@@ -59,11 +64,8 @@ export class UsersService {
 
   // Vérifier si l'utilisateur est authentifié
   isAuthenticated(): boolean {
-    if (typeof localStorage !== 'undefined') {
-      const token = localStorage.getItem('token');
-      return !!token;
-    }
-    return false;
+    return this.isLocalStorageAvailable() && !!localStorage.getItem('token');
+
   }
 
   // Vérifier si l'utilisateur est un administrateur
@@ -164,7 +166,7 @@ export class UsersService {
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');  // ou sessionStorage
+    return this.isLocalStorageAvailable() ? localStorage.getItem('token') : null;
   }
   getUserId(): number | null {
     const token = this.getToken();
