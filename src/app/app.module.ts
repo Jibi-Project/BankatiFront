@@ -45,6 +45,7 @@ import { FactureComponent } from './factures/facture/facture.component';
 import { CreancierDetailsComponent } from './factures/creancier-details/creancier-details.component';
 import { VirementComponent } from './factures/virement/virement.component';
 import { ComptesComponent } from './agent/comptes/comptes.component';
+import { CarteDisplayComponent } from './client/carte-display/carte-display.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,7 @@ import { ComptesComponent } from './agent/comptes/comptes.component';
     CreancierDetailsComponent,
     VirementComponent,
     ComptesComponent,
+    CarteDisplayComponent,
     
   ],
   imports: [

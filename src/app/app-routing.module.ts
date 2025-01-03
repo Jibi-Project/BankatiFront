@@ -17,6 +17,7 @@ import { FactureComponent } from './factures/facture/facture.component';
 import { CreancierDetailsComponent } from './factures/creancier-details/creancier-details.component';
 import { VirementComponent } from './factures/virement/virement.component';
 import { ComptesComponent } from './agent/comptes/comptes.component';
+import { CarteDisplayComponent } from './client/carte-display/carte-display.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path:"facture",component:FactureComponent},
   { path: 'creancier-details', component: CreancierDetailsComponent },
   {path:"virement",component:VirementComponent},
-  {path:"comptes",component:ComptesComponent}
+  {path:"comptes",component:ComptesComponent},
+  {path:"ecarte" ,component:CarteDisplayComponent}
 
 
 ];
