@@ -6,43 +6,60 @@
     <app-sidenav></app-sidenav>
   </mat-sidenav>
 <br/>
-
-<div class="creancier-details">
+  <div class="creancier-details">
     <div class="header">
-      <img [src]="selectedCreancier.img" alt="{{ selectedCreancier.nom }}" class="logo" />
+      <img [src]="selectedCreancier?.img" alt="{{ selectedCreancier?.nom }}" class="logo" />
       <div>
-        <h2>{{ selectedCreancier.nom }}</h2>
-        <p>Paiement Facture {{ selectedCreancier.nom }}</p>
+        <h2>{{ selectedCreancier?.nom || 'Créancier' }}</h2>
+        <p>Paiement Facture {{ selectedCreancier?.nom || 'Créancier' }}</p>
       </div>
     </div>
-  
-    <div class="form-group">
-      <label for="facture-code">Code facture (xxxxx-xxx)</label>
-      <input
-        id="facture-code"
-        type="text"
-        [(ngModel)]="factureCode"
-        placeholder="Enter code"
-        required
-      />
-    </div>
-  
-    <div class="form-group">
-      <label for="montant">Montant (MAD)</label>
-      <input
-        id="montant"
-        type="number"
-        [(ngModel)]="montant"
-        placeholder="Enter montant"
-        required
-      />
-    </div>
-  
 
-  
-    <button (click)="onSubmit()" class="btn btn-primary">SUIVANT</button>
-    <button routerLink="/facture"  class="btn btn-secondary">ANNULER</button>
+    <form [formGroup]="virementForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="receiver-account">Code Facture (Numéro de compte du receveur)</label>
+        <input
+          id="receiver-account"
+          type="text"
+          formControlName="numeroCompte"
+          placeholder="Entrez le numéro de compte"
+          required
+        />
+        <div *ngIf="virementForm.get('numeroCompte')?.invalid && virementForm.get('numeroCompte')?.touched">
+          <p class="error">Le numéro de compte est requis.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="montant">Montant (MAD)</label>
+        <input
+          id="montant"
+          type="number"
+          formControlName="montant"
+          placeholder="Entrez le montant"
+          required
+        />
+        <div *ngIf="virementForm.get('montant')?.invalid && virementForm.get('montant')?.touched">
+          <p class="error">Le montant doit être supérieur à 0.</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="motif">Description</label>
+        <input
+          id="motif"
+          type="text"
+          formControlName="motif"
+          placeholder="Description"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="virementForm.invalid || !eCarte">SUIVANT</button>
+      <button type="button" class="btn btn-secondary" routerLink="/facture">ANNULER</button>
+    </form>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
   </div>
-  
-  
 </mat-sidenav-container>

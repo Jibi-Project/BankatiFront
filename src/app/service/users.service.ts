@@ -10,6 +10,16 @@ export class UsersService {
   private BASE_URL = "http://localhost:8222";
   private apiUrl = 'http://localhost:8222/users/admin'; // Base URL for your API
 
+  private apiUrls = 'http://localhost:1010/api/creanciers'; // Base URL of your backend API
+
+
+  // Method to fetch a Creancier by email
+  getCreancierByEmail(email: string): Observable<any> {
+    const url = `${this.apiUrls}/getByEmail`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(url, { email }, { headers });
+  }
+
 
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);  // Définir un BehaviorSubject
   public currentUser$: Observable<any> = this.currentUserSubject.asObservable();  // Observable à exposer
