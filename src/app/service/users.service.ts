@@ -20,6 +20,10 @@ export class UsersService {
     return this.http.post(url, { email }, { headers });
   }
 
+  registerUser(userData: any): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/users/auth/register`, userData);
+  }
+
 
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);  // Définir un BehaviorSubject
   public currentUser$: Observable<any> = this.currentUserSubject.asObservable();  // Observable à exposer

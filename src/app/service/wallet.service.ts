@@ -14,4 +14,12 @@ export class WalletService {
   getWallet(userId: number): Observable<{ balance: number }> {
     return this.http.get<{ balance: number }>(`${this.baseUrl}/${userId}`);
   }
+
+  createWallet(email: string, initialBalance: number): Observable<any> {
+    const params = {
+      email: email,
+      initialBalance: initialBalance.toString(),
+    };
+    return this.http.post(`${this.baseUrl}/create`, null, { params });
+  }
 }
