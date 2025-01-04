@@ -31,9 +31,12 @@
           </div>
       </div>
 
+
+
       <!-- Message d'erreur si aucune carte -->
-      <div *ngIf="!eCarte" class="error">
-        <p>Les informations de la carte ne sont pas disponibles.</p>
+      <div *ngIf="wallet" class="wallet-container">
+        <h3>Solde du portefeuille</h3>
+        <p><strong>Balance:</strong> {{ wallet.balance | currency }}</p>
       </div>
     </div>
   </mat-sidenav-content>

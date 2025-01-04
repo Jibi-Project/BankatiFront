@@ -14,11 +14,17 @@ export class ECarteService {
     return this.http.post(`${this.BASE_URL}/api/ecarte/generer`, { email });
   }
 
-  private apiUrl = 'http://localhost:8222/api/ecarte/by-email';
 
 
   getECarteByEmail(email: string): Observable<any> {
     return this.http.post('http://localhost:8222/api/ecarte/by-email', { email });
+  }
+
+  private apiUrl = 'http://localhost:8222/api/ecarte/transaction'; // Remplacez par l'URL de votre backend
+
+
+  doTransaction(payload: any): Observable<string> {
+    return this.http.post<string>(this.apiUrl, payload);
   }
   
 }

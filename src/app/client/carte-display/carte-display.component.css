@@ -198,3 +198,19 @@
     color: white;
   }
   
+.wallet-container {
+  margin-left: 20px; /* Space between the card and the wallet balance */
+  text-align: left;
+  font-family: 'DM Serif Display', serif;
+}
+
+.wallet-container h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #151820;
+}
+
+.wallet-container p {
+  font-size: 16px;
+  color: #462d08;
+}
