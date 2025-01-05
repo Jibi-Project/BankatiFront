@@ -1,0 +1,73 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+<div class="transcation-history-container">
+    <!-- User Information -->
+    <mat-card *ngIf="profileInfo">
+      <h2>Profile Information</h2>
+      <p><strong>Name:</strong>  {{ profileInfo?.prenom }} {{ profileInfo?.nom }}</p>
+      <p><strong>Wallet Balance:</strong> {{ wallet?.balance || 'N/A' }} DH</p>
+    </mat-card>
+  
+    <!-- eCarte Information -->
+    <mat-card *ngIf="eCarte">
+      <h2>eCarte Details</h2>
+      <p><strong>Card Number:</strong> {{ eCarte.numeroCarte }}</p>
+      <p><strong>Card Holder:</strong> {{ eCarte.cvv || 'N/A' }}</p>
+    </mat-card>
+  
+    <!-- Transaction History -->
+    <mat-card>
+      <h2>Transaction History</h2>
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+  
+      <div *ngIf="transactions && transactions.length > 0; else noTransactions">
+        <mat-table [dataSource]="transactions" class="mat-elevation-z8">
+  
+
+  
+          <!-- Receiver ID Column -->
+          <ng-container matColumnDef="receiverId">
+            <mat-header-cell *matHeaderCellDef> Receiver ID </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{ transaction.receiverId }} </mat-cell>
+          </ng-container>
+  
+          <!-- Amount Column -->
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{ transaction.amount }} DH </mat-cell>
+          </ng-container>
+  
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{ transaction.description }} </mat-cell>
+          </ng-container>
+  
+          <!-- Created At Column -->
+          <ng-container matColumnDef="createdAt">
+            <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+            <mat-cell *matCellDef="let transaction">
+              {{ transaction.createdAt | date: 'medium' }}
+            </mat-cell>
+          </ng-container>
+  
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+  
+      <!-- No Transactions Template -->
+      <ng-template #noTransactions>
+        <p>No transactions found.</p>
+      </ng-template>
+    </mat-card>
+  </div>
+</mat-sidenav-container>

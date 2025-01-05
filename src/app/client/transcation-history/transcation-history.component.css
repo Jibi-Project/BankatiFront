@@ -1,0 +1,27 @@
+.transcation-history-container {
+    padding: 20px;
+  }
+  
+  mat-card {
+    margin-bottom: 20px;
+    padding: 16px;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+  }
+  
+  mat-table {
+    width: 100%;
+  }
+  
+  mat-header-cell, mat-cell {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  mat-header-cell {
+    font-weight: bold;
+  }
+  
