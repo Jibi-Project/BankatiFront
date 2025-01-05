@@ -51,6 +51,7 @@ import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.com
 import { DashboardComponent } from './agent/dashboard/dashboard.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranscationHistoryComponent } from './client/transcation-history/transcation-history.component';
+import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { TranscationHistoryComponent } from './client/transcation-history/transc
     CryptoconvertComponent,
     DashboardComponent,
     TranscationHistoryComponent,
+    BuyCryptoComponent,
     
   ],
   imports: [
