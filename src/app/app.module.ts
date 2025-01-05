@@ -48,6 +48,9 @@ import { ComptesComponent } from './agent/comptes/comptes.component';
 import { CarteDisplayComponent } from './client/carte-display/carte-display.component';
 import { AddclientComponent } from './agent/addclient/addclient.component';
 import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
+import { DashboardComponent } from './agent/dashboard/dashboard.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,10 +78,12 @@ import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.com
     CarteDisplayComponent,
     AddclientComponent,
     CryptoconvertComponent,
+    DashboardComponent,
     
   ],
   imports: [
     BrowserModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,

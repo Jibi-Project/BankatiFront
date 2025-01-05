@@ -52,7 +52,7 @@ export class LoginComponent {
             this.showError("Erreur lors de la redirection vers le profil.");
           });
         } else if (response.role === 'ADMIN') {
-          this.router.navigate(['/agent']).then(() => {
+          this.router.navigate(['/dashboard']).then(() => {
             console.log('Navigated to agent successfully.');
           }).catch((err) => {
             console.error('Navigation to agent failed:', err);

@@ -13,6 +13,9 @@ export class UsersService {
   private apiUrls = 'http://localhost:1010/api/creanciers'; // Base URL of your backend API
 
 
+  getUserCount(): Observable<number> {
+    return this.http.get<number>(`${this.BASE_URL}/users/count-user-role`);
+  }
   // Method to fetch a Creancier by email
   getCreancierByEmail(email: string): Observable<any> {
     const url = `${this.apiUrls}/getByEmail`;

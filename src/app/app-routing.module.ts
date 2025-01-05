@@ -21,6 +21,7 @@ import { CarteDisplayComponent } from './client/carte-display/carte-display.comp
 import { AddclientComponent } from './agent/addclient/addclient.component';
 import { CryptoService } from './service/crypto.service';
 import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
+import { DashboardComponent } from './agent/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -43,7 +44,8 @@ const routes: Routes = [
   {path:"comptes",component:ComptesComponent},
   {path:"ecarte" ,component:CarteDisplayComponent},
   {path:"add",component:AddclientComponent},
-  {path:"cryptoConvert",component:CryptoconvertComponent}
+  {path:"cryptoConvert",component:CryptoconvertComponent},
+  {path:"dashboard",component:DashboardComponent}
 
 
 ];
