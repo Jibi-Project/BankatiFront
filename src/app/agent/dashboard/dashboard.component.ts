@@ -12,6 +12,9 @@ export class DashboardComponent implements OnInit {
   userCount: number | null = null;
   chart: any;
 
+  averageAmount: number | null = null;
+  isLoading: boolean = true;
+
 
   constructor(private userService: UsersService ,private eCarteService: ECarteService) {}
 
@@ -23,6 +26,22 @@ export class DashboardComponent implements OnInit {
     this.eCarteService.getTransactionsPerDay().subscribe((data) => {
       this.createChart(data);
     });
+
+    this.fetchAverageTransactionAmount();
+
+  }
+
+  fetchAverageTransactionAmount(): void {
+    this.eCarteService.getAverageTransactionAmount().subscribe(
+      (data) => {
+        this.averageAmount = data;
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error fetching average transaction amount:', error);
+        this.isLoading = false;
+      }
+    );
   }
 
   createChart(data: { [key: string]: number }): void {

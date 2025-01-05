@@ -6,33 +6,34 @@
     <app-leftnav></app-leftnav>
   </mat-sidenav>
 
-<div class="container">
-    <p *ngIf="errorMessage" class="error-message">{{errorMessage}}</p>
+  <div class="container">
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
     <h2>Update Client</h2>
     <form (ngSubmit)="updateUser()">
-        <div class="form-group">
-                <label for="">Nom: </label>
-                <input type="text" name="nom" [(ngModel)]="userData.nom">
-        </div>
-        <div class="form-group">
-                <label for="">Prénom: </label>
-                <input type="text" name="prenom" [(ngModel)]="userData.prenom">
-        </div>
-        <div class="form-group">
-                <label for="">Email: </label>
-                <input type="text" name="email" [(ngModel)]="userData.email">
-        </div>
-        <div class="form-group">
-                <label for="">Téléphone: </label>
-                <input type="text" name="telephone" [(ngModel)]="userData.telephone">
-        </div>
-        <div class="form-group">
-                <label for="">Adresse: </label>
-                <input type="text" name="adresse" [(ngModel)]="userData.adresse">
-        </div>
-        <button type="submit">Update</button>
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" [(ngModel)]="userData.nom" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom" [(ngModel)]="userData.prenom" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" [(ngModel)]="userData.email" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="telephone">Téléphone:</label>
+        <input type="text" id="telephone" name="telephone" [(ngModel)]="userData.telephone" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" [(ngModel)]="userData.adresse" class="form-control" />
+      </div>
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">Update</button>
         <button type="button" class="btn btn-secondary" (click)="Annuler()">Annuler</button>
-
+      </div>
     </form>
-</div>
+  </div>
 </mat-sidenav-container>

@@ -14,6 +14,10 @@ export class ECarteService {
     return this.http.get<{ [key: string]: number }>(`http://localhost:8222/api/transactions/per-day`);
   }
 
+  getAverageTransactionAmount(): Observable<number> {
+    return this.http.get<number>(`http://localhost:8222/api/transactions/average-amount`);
+  }
+
   genererECarte(email: string): Observable<any> {
     return this.http.post(`${this.BASE_URL}/api/ecarte/generer`, { email });
   }

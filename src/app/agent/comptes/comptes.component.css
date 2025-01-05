@@ -1,232 +1,108 @@
+/* Table Container */
 .table-container {
-    margin: 20px;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-/* Conteneur principal */
-.sidenav-container {
-  height: 100vh; /* Hauteur de l'écran */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Sidebar */
-mat-sidenav {
-  width: 250px; /* Largeur du sidebar */
-  background: #ffffff; /* Couleur de fond */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre pour un effet visuel */
-}
-
-/* Contenu principal */
-mat-sidenav-content {
-  display: flex;
-  flex-direction: column;
-  background-color: #f9f9f9; /* Couleur de fond du contenu */
+  margin: 20px;
+  background-color: #fff8e1; /* Light orange background for the container */
   padding: 20px;
-}
-
-/* Header */
-mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  background: #3f51b5; /* Couleur du header */
-  color: white;
-}
-
-/* Carte Profil */
-.dashboard-card {
-  background: #ffffff;
   border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Légère ombre */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
+/* Form Field */
+mat-form-field {
+  width: 100%;
   margin-bottom: 20px;
+  background: white;
+  border-radius: 4px;
 }
 
-.card-logo {
-  width: 50px; /* Taille de l'image */
-  height: 50px;
-  margin-right: 15px;
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.card-title-container {
-  flex-grow: 1;
+.mat-header-row {
+  background-color: #ff9800; /* Orange header background */
+  color: white; /* White text for contrast */
 }
 
-.card-title {
-  font-size: 1.5rem;
-  font-weight: bold;
+.mat-row:nth-child(even) {
+  background-color: #fff3e0; /* Alternating row color: lighter orange */
 }
 
-.card-content {
-  font-size: 1rem;
-  color: #555555;
+.mat-cell, .mat-header-cell {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0; /* Subtle row divider */
 }
 
-.card-footer {
-  margin-top: 20px;
-  text-align: right;
+.mat-cell {
+  color: #555; /* Neutral text color */
 }
 
-button[mat-button] {
-  color: #3f51b5; /* Couleur du bouton */
-}
-
-/* Page */
-.page {
-  margin-top: 20px;
-}
-
-.page__content {
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive (petits écrans) */
-@media (max-width: 768px) {
-  mat-sidenav {
-    width: 200px; /* Réduit la largeur de la sidebar */
-  }
-
-  .page__content {
-    padding: 15px; /* Réduit le padding */
-  }
-
-  .dashboard-card {
-    padding: 15px;
-  }
-}
-/* Supprimer les marges et padding inutiles */
-body, mat-sidenav-content {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/* Grid pour les cartes */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  background-color: #f9f9f9; /* Fond de la page */
-}
-
-/* Carte générale */
-.dashboard-card {
-  display: flex;
-  flex-direction: column;
+.mat-sort-header-container {
   align-items: center;
-  text-align: center;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
 }
 
-.dashboard-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Icones dans les cartes */
-.card-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
-}
-
-/* Titre des cartes */
-mat-card-title {
-  font-weight: normal; /* Texte non gras */
-  font-size: 8px; /* Facultatif : ajustez la taille de la police si nécessaire */
-  color: #000; /* Facultatif : changez la couleur si besoin */
-}
-/* Supprimer les marges et padding inutiles */
-body, mat-sidenav-content {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/* Grid pour les cartes */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 cartes par ligne */
-  gap: 20px;  /* Espace entre les cartes */
-  padding: 20px;
-  background-color: #f9f9f9; /* Fond de la page */
-}
-
-/* Carte générale */
-.dashboard-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.dashboard-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Icones dans les cartes */
-.card-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
-}
-
-/* Titre des cartes */
-mat-card-title {
-  font-size: 1.2rem;
+/* Actions Column */
+.edit-button {
+  background-color: #ff9800; /* Orange background */
+  color: white; /* White text */
   font-weight: bold;
-  color: #333333;
-  margin: 0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: none; /* Normal text casing */
 }
 
-/* Responsivité : cartes en 2 par ligne pour les petits écrans */
+.edit-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #f57c00; /* Darker orange on hover */
+}
+
+/* Lock/Unlock Button */
+.mat-raised-button {
+  color: white;
+  background-color: #ff9800;
+}
+
+.mat-raised-button:hover {
+  background-color: #f57c00; /* Darker orange for hover effect */
+}
+
+/* Paginator */
+.mat-paginator {
+  background-color: #fff8e1; /* Light orange background */
+  color: #ff9800; /* Orange text */
+}
+
+.mat-paginator-page-size {
+  color: #ff9800;
+}
+
+/* Header Styling */
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff9800; /* Orange title */
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Responsiveness */
 @media (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(2, 1fr);  /* 2 cartes par ligne */
+  .table-container {
+    margin: 10px;
+    padding: 10px;
   }
-}
 
-/* Responsivité : cartes en 1 par ligne pour les très petits écrans */
-@media (max-width: 480px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;  /* 1 carte par ligne */
+  .mat-header-row, .mat-row {
+    font-size: 14px; /* Smaller text for smaller screens */
   }
-}
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Ajuste les colonnes */
-  gap: 20px; /* Espacement entre les cartes */
-  margin-top: 50px; /* Espace au-dessus pour descendre les cartes */
-  padding: 10px; /* Facultatif : pour plus d'espacement intérieur */
-}
-.dashboard-card .card-icon {
-  width: 35%;          /* Utilise la largeur complète du conteneur */
-  height: 90px;        /* Ajuste la hauteur à votre préférence (par exemple 200px) */
-  object-fit: cover;    /* Ajuste l'image pour remplir le conteneur tout en conservant son ratio d'aspect */
+
+  .edit-button {
+    padding: 4px 8px; /* Smaller buttons for smaller screens */
+  }
 }
