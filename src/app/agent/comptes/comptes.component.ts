@@ -6,6 +6,8 @@ import { UsersService } from '../../service/users.service';
 import { Router } from '@angular/router';
 import { WalletService } from '../../service/wallet.service';
 import { lastValueFrom } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { BalanceDialogComponent } from '../balance-dialog/balance-dialog.component';
 
 @Component({
   selector: 'app-comptes',
@@ -20,7 +22,9 @@ export class ComptesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private yourService: UsersService,private readonly router: Router ,  private walletService: WalletService,
+  constructor(private yourService: UsersService,private readonly router: Router , 
+    private dialog: MatDialog,
+     private walletService: WalletService,
   ) {}
 
   ngOnInit(): void {
@@ -97,6 +101,35 @@ export class ComptesComponent implements OnInit, AfterViewInit {
 
   navigateToUpdate(userId: string) {
     this.router.navigate(['/update', userId]);
+  }
+
+  onEditBalance(user: User): void {
+    const dialogRef = this.dialog.open(BalanceDialogComponent, {
+      width: '400px',
+      data: { newBalance: user.balance }, // Pass current balance to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe((newBalance) => {
+      if (newBalance != null) {
+        this.updateBalance(user.id, newBalance);
+      }
+    });
+  }
+
+  updateBalance(userId: number, newBalance: number): void {
+    this.walletService.updateWalletBalance(userId, newBalance).subscribe(
+      () => {
+        // Update the local data source
+        const user = this.dataSource.data.find((u) => u.id === userId);
+        if (user) {
+          user.balance = newBalance;
+        }
+        console.log(`Balance for user ID ${userId} updated to ${newBalance}`);
+      },
+      (error) => {
+        console.error('Failed to update balance', error);
+      }
+    );
   }
 }
 
