@@ -1,0 +1,59 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+
+<div class="container">
+    <h1 class="title">Crypto Converter</h1>
+  
+    <form [formGroup]="convertForm" (ngSubmit)="onSubmit()" class="form">
+      <div class="form-group">
+        <label for="crypto">Cryptocurrency</label>
+        <input id="crypto" type="text" formControlName="crypto" placeholder="e.g., bitcoin" />
+      </div>
+  
+      <div class="form-group">
+        <label for="fiat">Fiat Currency</label>
+        <input id="fiat" type="text" formControlName="fiat" placeholder="e.g., usd" />
+      </div>
+  
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" formControlName="amount" />
+      </div>
+  
+      <div class="form-group">
+        <label for="direction">Conversion Direction</label>
+        <select id="direction" formControlName="direction">
+          <option value="crypto-to-fiat">Crypto to Fiat</option>
+          <option value="fiat-to-crypto">Fiat to Crypto</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="submit-btn" [disabled]="convertForm.invalid">Convert</button>
+    </form>
+  
+    <div *ngIf="result" class="result">
+      <p *ngIf="result.fiatAmount">Fiat Amount: {{ result.fiatAmount | currency }}</p>
+      <p *ngIf="result.cryptoAmount">Crypto Amount: {{ result.cryptoAmount }}</p>
+      <p>Rate: {{ result.rate }}</p>
+    </div>
+  
+    <div *ngIf="errorMessage" class="error">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>
+
+   <!-- New Buttons for Buy and Sell -->
+   <div class="button-container">
+    <button class="buy-btn" (click)="onBuy()">Buy</button>
+    <button class="sell-btn" (click)="onSell()">Sell</button>
+  </div>
+
+</mat-sidenav-container>
+
+  

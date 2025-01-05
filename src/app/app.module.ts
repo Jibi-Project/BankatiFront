@@ -47,6 +47,7 @@ import { VirementComponent } from './factures/virement/virement.component';
 import { ComptesComponent } from './agent/comptes/comptes.component';
 import { CarteDisplayComponent } from './client/carte-display/carte-display.component';
 import { AddclientComponent } from './agent/addclient/addclient.component';
+import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +74,7 @@ import { AddclientComponent } from './agent/addclient/addclient.component';
     ComptesComponent,
     CarteDisplayComponent,
     AddclientComponent,
+    CryptoconvertComponent,
     
   ],
   imports: [
