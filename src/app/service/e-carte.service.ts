@@ -10,6 +10,10 @@ export class ECarteService {
 
   constructor(private http: HttpClient) { }
 
+  getTransactionsPerDay(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`http://localhost:8222/api/transactions/per-day`);
+  }
+
   genererECarte(email: string): Observable<any> {
     return this.http.post(`${this.BASE_URL}/api/ecarte/generer`, { email });
   }
@@ -26,5 +30,8 @@ export class ECarteService {
   doTransaction(payload: any): Observable<string> {
     return this.http.post<string>(this.apiUrl, payload);
   }
+
+
+
   
 }
