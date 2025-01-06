@@ -1,108 +1,226 @@
-/* Table Container */
+/* Styles de base pour la page */
+.container {
+  width: 1200px; /* Augmenter la largeur de la liste */
+  margin: 20px auto; /* Centrer le conteneur avec un espacement autour */
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
+}
+
 .table-container {
-  margin: 20px;
-  background-color: #fff8e1; /* Light orange background for the container */
-  padding: 20px;
+  width: 100%; /* Prendre toute la largeur du conteneur */
+  max-width: 100%; /* S'assurer que la table occupe toute la largeur disponible */
+  overflow-x: auto; /* Permettre le défilement horizontal si nécessaire */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet subtil */
 }
 
-/* Form Field */
-mat-form-field {
-  width: 100%;
-  margin-bottom: 20px;
-  background: white;
-  border-radius: 4px;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.mat-header-row {
-  background-color: #ff9800; /* Orange header background */
-  color: white; /* White text for contrast */
-}
-
-.mat-row:nth-child(even) {
-  background-color: #fff3e0; /* Alternating row color: lighter orange */
-}
-
-.mat-cell, .mat-header-cell {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #e0e0e0; /* Subtle row divider */
-}
-
-.mat-cell {
-  color: #555; /* Neutral text color */
-}
-
-.mat-sort-header-container {
+.special-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 12px;
+  background-color: #ffffff; /* Couleur de fond très claire pour la ligne spéciale */
+  border-bottom: 1px solid #ffffff; /* Bordure inférieure pour délimiter la ligne */
+  margin-bottom: 10px; /* Espacement entre la ligne spéciale et le tableau */
 }
 
-/* Actions Column */
-.edit-button {
-  background-color: #ff9800; /* Orange background */
-  color: white; /* White text */
-  font-weight: bold;
-  border: none;
+.table-title {
+  font-size: 1.5em;
+  color: #333; /* Couleur du titre en gris noir */
+  margin: 0;
+}
+
+.view-all-button {
+  border: 1px solid #ca7c06; /* Bordure bleue pour le bouton "View All" */
+  color: #ca7c06; /* Couleur du texte bleue pour le bouton "View All" */
+  font-size: 0.9em;
   padding: 6px 12px;
+  text-transform: none;
+  background: none; /* Pas de fond pour un look de cadre */
+}
+
+.view-all-button:hover {
+  background-color: #f0f0f0; /* Couleur de fond au survol */
+}
+
+.custom-table {
+  width: 100%; /* Prend toute la largeur disponible */
+  border-collapse: collapse; /* Enlève les espaces entre les cellules */
+}
+
+.header-row {
+  background-color: #ffffff; /* Couleur de fond pour l'en-tête */
+}
+
+.header-cell {
+  color: #333; /* Texte sombre pour l'en-tête */
+  font-size: 1em; /* Taille de police réduite */
+  padding: 12px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.data-row:nth-child(even) {
+  background-color: #f9f9f9; /* Couleur très claire pour les lignes alternées */
+}
+
+.data-cell {
+  padding: 12px;
+  text-align: left;
+  font-size: 0.9em; /* Taille de police réduite */
+}
+
+/* Spécifique aux images dans le tableau */
+.engin-photo {
+  width: 100px; /* Taille de l'image réduite */
+  height: auto;
   border-radius: 4px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  text-transform: none; /* Normal text casing */
+  box-shadow: none; /* Pas d'ombre pour un look plus simple */
+}
+
+/* Boutons d'action */
+.action-button {
+  margin: 0 4px;
+  font-size: 0.9em;
+  padding: 6px 12px;
+  text-transform: none; /* Supprimer la capitalisation automatique */
+  border: 1px solid #ca7c06; /* Bordure bleue pour le bouton "Détails" */
+  color: #ca7c06; /* Couleur du texte bleue pour le bouton "Détails" */
+  background: none; /* Pas de fond pour un look de cadre */
+}
+
+.action-button:hover {
+  background-color: #f0f0f0; /* Couleur de fond au survol */
+}
+
+/* Icônes d'action */
+.action-icon {
+  font-size: 24px; /* Taille de l'icône */
+  color: #ca7c06; /* Couleur de l'icône */
+  cursor: pointer; /* Changer le curseur pour indiquer que c'est cliquable */
+  margin: 0 4px;
+}
+
+.action-icon:hover {
+  color: #ca7c06; /* Couleur au survol */
+}
+
+/* Styliser les boutons dans les cellules */
+.edit-button, .mat-raised-button {
+  margin-right: 10px;
+}
+.special-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  margin-bottom: 10px;
+}
+
+.table-title {
+  font-size: 1.5em;
+  color: #333;
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px; /* Espacement entre les deux boutons */
+}
+
+.view-all-button {
+  border: 1px solid #ca7c06;
+  color: #ca7c06;
+  font-size: 0.9em;
+  padding: 6px 12px;
+  text-transform: none;
+  background: none;
+}
+
+.view-all-button:hover {
+  background-color: #f0f0f0;
+}
+/* Bouton Edit (gris) */
+.edit-button {
+  border: 1px solid #ccc; /* Bordure grise */
+  color: #555; /* Couleur du texte gris foncé */
+  font-size: 0.9em;
+  padding: 6px 12px;
+  text-transform: none;
+  background: none;
+  transition: background-color 0.3s, color 0.3s; /* Transition pour un effet fluide */
 }
 
 .edit-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  background-color: #f57c00; /* Darker orange on hover */
+  background-color: #686d74; /* Couleur de fond gris clair au survol */
+  color: #333; /* Texte légèrement plus foncé au survol */
 }
 
-/* Lock/Unlock Button */
-.mat-raised-button {
-  color: white;
-  background-color: #ff9800;
+/* Bouton Unlock (style "View All") */
+.unlock-button {
+  border: 1px solid #ca7c06; /* Bordure orange */
+  color: #ca7c06; /* Couleur du texte orange */
+  font-size: 0.9em;
+  padding: 6px 12px;
+  text-transform: none;
+  background: none;
+  transition: background-color 0.3s, color 0.3s; /* Transition pour un effet fluide */
 }
 
-.mat-raised-button:hover {
-  background-color: #f57c00; /* Darker orange for hover effect */
+.unlock-button:hover {
+  background-color: #f0f0f0; /* Couleur de fond gris clair au survol */
+  color: #ca7c06; /* Texte reste orange au survol */
+}
+/* Styles de base pour la page */
+.container {
+  width: 1200px; /* Largeur de la liste */
+  margin: 100px auto 30px; /* Marge supérieure de 40px pour déplacer la liste un peu plus bas */
+  display: flex;
+  justify-content: center; /* Centrer horizontalement */
+  align-items: center; /* Centrer verticalement */
 }
 
-/* Paginator */
-.mat-paginator {
-  background-color: #fff8e1; /* Light orange background */
-  color: #ff9800; /* Orange text */
+.table-container {
+  width: 100%; /* Prendre toute la largeur du conteneur */
+  max-width: 100%; /* S'assurer que la table occupe toute la largeur disponible */
+  overflow-x: auto; /* Permettre le défilement horizontal si nécessaire */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour un effet subtil */
 }
 
-.mat-paginator-page-size {
-  color: #ff9800;
+.special-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: #ffffff; /* Couleur de fond très claire pour la ligne spéciale */
+  border-bottom: 1px solid #ffffff; /* Bordure inférieure pour délimiter la ligne */
+  margin-bottom: 10px; /* Espacement entre la ligne spéciale et le tableau */
 }
 
-/* Header Styling */
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ff9800; /* Orange title */
-  text-align: center;
-  margin-top: 20px;
+.table-title {
+  font-size: 1.5em;
+  color: #333; /* Couleur du titre en gris noir */
+  margin: 0;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .table-container {
-    margin: 10px;
-    padding: 10px;
-  }
+.button-group {
+  display: flex;
+  gap: 10px; /* Espacement entre les deux boutons */
+}
 
-  .mat-header-row, .mat-row {
-    font-size: 14px; /* Smaller text for smaller screens */
-  }
+.view-all-button {
+  border: 1px solid #ca7c06; /* Bordure bleue pour le bouton "View All" */
+  color: #ca7c06; /* Couleur du texte bleue pour le bouton "View All" */
+  font-size: 0.9em;
+  padding: 6px 12px;
+  text-transform: none;
+  background: none; /* Pas de fond pour un look de cadre */
+}
 
-  .edit-button {
-    padding: 4px 8px; /* Smaller buttons for smaller screens */
-  }
+.view-all-button:hover {
+  background-color: #f0f0f0; /* Couleur de fond au survol */
 }

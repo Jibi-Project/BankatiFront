@@ -47,4 +47,10 @@
   mat-progress-spinner {
     margin: auto;
   }
+
+  .brown-button {
+    background-color: rgb(165, 122, 42);
+    color: white; /* To ensure the text is readable */
+  }
+  
   
