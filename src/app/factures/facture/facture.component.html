@@ -8,13 +8,13 @@
 <br/>
   <div class="categories-container">
     <h2>Paiements de Factures</h2>
-  
+
     <div class="category" *ngFor="let category of categories">
       <button (click)="toggleCategory(category)">
         <mat-icon>{{ category.icon }}</mat-icon>
         {{ category.title }}
       </button>
-  
+
       <div class="submenu" *ngIf="category.open">
         <ul>
           <li *ngFor="let option of category.options" class="creancier-item" (click)="redirectToCreancierDetails(option)">
@@ -25,5 +25,5 @@
       </div>
     </div>
   </div>
-  
+
 </mat-sidenav-container>

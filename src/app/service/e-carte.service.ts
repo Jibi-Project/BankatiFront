@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ECarteService {
-  private BASE_URL = "http://localhost:8222";
+  private BASE_URL = "http://localhost:1011";
 
   constructor(private http: HttpClient) { }
 
   getTransactionsPerDay(): Observable<{ [key: string]: number }> {
-    return this.http.get<{ [key: string]: number }>(`http://localhost:8222/api/transactions/per-day`);
+    return this.http.get<{ [key: string]: number }>(`http://localhost:1011/api/transactions/per-day`);
   }
 
   getAverageTransactionAmount(): Observable<number> {
-    return this.http.get<number>(`http://localhost:8222/api/transactions/average-amount`);
+    return this.http.get<number>(`http://localhost:1011/api/transactions/average-amount`);
   }
 
   genererECarte(email: string): Observable<any> {
@@ -25,10 +25,10 @@ export class ECarteService {
 
 
   getECarteByEmail(email: string): Observable<any> {
-    return this.http.post('http://localhost:8222/api/ecarte/by-email', { email });
+    return this.http.post('http://localhost:1011/api/ecarte/by-email', { email });
   }
 
-  private apiUrl = 'http://localhost:8222/api/ecarte/transaction'; // Remplacez par l'URL de votre backend
+  private apiUrl = 'http://localhost:1011/api/ecarte/transaction'; // Remplacez par l'URL de votre backend
 
 
   doTransaction(payload: any): Observable<string> {
@@ -38,11 +38,11 @@ export class ECarteService {
 
 
   getTransactionsBySenderId(senderId: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:8222/api/transactions/by-sender`, {
+    return this.http.get<any[]>(`http://localhost:1011/api/transactions/by-sender`, {
       params: { senderId }
     });
   }
 
 
-  
+
 }

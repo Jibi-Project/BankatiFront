@@ -18,20 +18,20 @@ export class VirementComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private eCarteService: ECarteService,
-     private userService: UsersService,
+    private userService: UsersService
   ) {}
 
   ngOnInit(): void {
-    this.email = this.userService.getUserEmail()|| '';;
+    this.email = this.userService.getUserEmail() || '';
 
-    // Initialisation du formulaire
+    // Initialize the form
     this.virementForm = this.fb.group({
       numeroCompte: ['', [Validators.required]],
       montant: ['', [Validators.required, Validators.min(1)]],
       motif: ['', Validators.required],
     });
 
-    // Récupérer la carte de l'utilisateur connecté
+    // Fetch the user's ECarte
     if (this.email) {
       this.getECarte();
     } else {
@@ -45,7 +45,7 @@ export class VirementComponent implements OnInit {
         this.eCarte = data;
         this.errorMessage = ''; // Clear any previous error messages
       },
-      error: (err) => {
+      error: () => {
         this.errorMessage = 'Erreur lors de la récupération de votre carte.';
       },
     });
@@ -58,7 +58,7 @@ export class VirementComponent implements OnInit {
     }
 
     const payload = {
-      senderNumeroCarte: this.eCarte.numeroCarte, // Carte de l'utilisateur connecté
+      senderNumeroCarte: this.eCarte.numeroCarte, // User's card
       receiverNumeroCarte: this.virementForm.value.numeroCompte,
       amount: this.virementForm.value.montant,
       description: this.virementForm.value.motif,
@@ -66,7 +66,7 @@ export class VirementComponent implements OnInit {
 
     this.eCarteService.doTransaction(payload).subscribe({
       next: (response) => {
-        this.successMessage = 'Virement effectué avec succès.';
+        this.successMessage = 'Virement effectué avec succès. Un email de confirmation a été envoyé.';
         this.errorMessage = '';
         this.virementForm.reset();
       },
