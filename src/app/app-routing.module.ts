@@ -24,6 +24,7 @@ import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.com
 import { DashboardComponent } from './agent/dashboard/dashboard.component';
 import { TranscationHistoryComponent } from './client/transcation-history/transcation-history.component';
 import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
+import { AbonnementsComponent } from './abonnements/abonnements.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -49,7 +50,8 @@ const routes: Routes = [
   {path:"cryptoConvert",component:CryptoconvertComponent},
   {path:"dashboard",component:DashboardComponent},
   {path:"history",component:TranscationHistoryComponent},
-  {path:"buyCrypto",component:BuyCryptoComponent}
+  {path:"buyCrypto",component:BuyCryptoComponent},
+  {path:"abonnements",component:AbonnementsComponent}
 
 
 ];

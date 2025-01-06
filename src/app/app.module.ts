@@ -53,6 +53,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranscationHistoryComponent } from './client/transcation-history/transcation-history.component';
 import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
 import { BalanceDialogComponent } from './agent/balance-dialog/balance-dialog.component';
+import { AbonnementsComponent } from './abonnements/abonnements.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -85,10 +87,12 @@ import { BalanceDialogComponent } from './agent/balance-dialog/balance-dialog.co
     TranscationHistoryComponent,
     BuyCryptoComponent,
     BalanceDialogComponent,
+    AbonnementsComponent,
     
   ],
   imports: [
     BrowserModule,
+    MatSelectModule,
     MatProgressSpinnerModule,
     AppRoutingModule,
     FormsModule,
