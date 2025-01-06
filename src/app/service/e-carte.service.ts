@@ -37,5 +37,12 @@ export class ECarteService {
 
 
 
+  getTransactionsBySenderId(senderId: string): Observable<any[]> {
+    return this.http.get<any[]>(`http://localhost:8222/api/transactions/by-sender`, {
+      params: { senderId }
+    });
+  }
+
+
   
 }

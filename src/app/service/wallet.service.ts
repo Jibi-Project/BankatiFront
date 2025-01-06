@@ -22,4 +22,8 @@ export class WalletService {
     };
     return this.http.post(`${this.baseUrl}/create`, null, { params });
   }
+
+  updateWalletBalance(id: number, newBalance: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/wallet/${id}`, { newBalance }, { responseType: 'text' });
+  }
 }

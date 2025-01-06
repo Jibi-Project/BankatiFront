@@ -1,0 +1,82 @@
+import { Component, OnInit } from '@angular/core';
+import { CryptoService } from '../../service/crypto.service';
+import { UsersService } from '../../service/users.service';
+
+@Component({
+  selector: 'app-buy-crypto',
+  templateUrl: './buy-crypto.component.html',
+  styleUrl: './buy-crypto.component.css'
+})
+export class BuyCryptoComponent implements OnInit {
+  crypto = '';
+  fiat = '';
+  userId: number | null = null // Store userId here
+  amount: number | null = null;
+  result: any = null;
+  profileInfo: any = null; // Store profile info here
+  errorMessage: string = '';
+
+  constructor(private cryptoService: CryptoService, private userService: UsersService) {}
+
+  ngOnInit(): void {
+    this.loadUserProfile();
+  }
+
+  // Method to load the user profile and fetch userId
+  async loadUserProfile() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No Token Found');
+      }
+
+      console.log('Fetching user profile with token:', token);
+      const response = await this.userService.getYourProfile(token);
+      console.log('API Response:', response);
+
+      // Access the nested `ourUsers` object
+      this.profileInfo = response.ourUsers;
+      if (!this.profileInfo) {
+        throw new Error('User profile data is empty');
+      }
+
+      console.log('Profile Info:', this.profileInfo);
+
+      // Set the userId from profile info
+      if (this.profileInfo.id) {
+        this.userId = this.profileInfo.id;
+        console.log('UserId set to:', this.userId);
+      } else {
+        console.warn('Profile ID not found in profile info:', this.profileInfo);
+      }
+    } catch (error: any) {
+      console.error('Error loading profile:', error.message);
+      this.errorMessage = error.message;
+    }
+  }
+
+  // Method to buy crypto
+  buyCrypto() {
+    if (this.crypto && this.fiat && this.amount !== null && this.userId) {
+      const request = {
+        userId: this.userId, // Include userId in the request
+        crypto: this.crypto,
+        fiat: this.fiat,
+        amount: this.amount,
+      };
+      this.cryptoService.buyCrypto(request).subscribe({
+        next: (data) => {
+          this.result = data;
+          console.log('Crypto bought successfully:', data);
+        },
+        error: (err) => {
+          console.error('Error buying crypto:', err);
+          this.result = { error: 'Transaction failed!' };
+        },
+      });
+    } else {
+      console.warn('Missing fields for buying crypto.');
+      this.errorMessage = 'Please fill in all fields.';
+    }
+  }
+}

@@ -50,9 +50,9 @@ import { AddclientComponent } from './agent/addclient/addclient.component';
 import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
 import { DashboardComponent } from './agent/dashboard/dashboard.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AbonnementsComponent } from './abonnements/abonnements.component';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
+import { TranscationHistoryComponent } from './client/transcation-history/transcation-history.component';
+import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
+import { BalanceDialogComponent } from './agent/balance-dialog/balance-dialog.component';
 
 @NgModule({
   declarations: [
@@ -82,8 +82,10 @@ import { MatOptionModule } from '@angular/material/core';
     AddclientComponent,
     CryptoconvertComponent,
     DashboardComponent,
-    AbonnementsComponent
-
+    TranscationHistoryComponent,
+    BuyCryptoComponent,
+    BalanceDialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -107,11 +109,8 @@ import { MatOptionModule } from '@angular/material/core';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatOptionModule,
-
-
+    ReactiveFormsModule
+    
   ],
   providers: [
     UsersService,  // Fournir le service d'utilisateur pour l'authentification
