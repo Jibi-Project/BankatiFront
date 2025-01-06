@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbonnementsService } from '../service/abonnement.service';
+import { ECarteService } from '../service/e-carte.service'; // To fetch ECarte details
+import { UsersService } from '../service/users.service'; // To get user information
 
 @Component({
   selector: 'app-abonnements',
@@ -7,74 +10,98 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./abonnements.component.scss'],
 })
 export class AbonnementsComponent implements OnInit {
-  abonnementForm!: FormGroup;
-  abonnements: any[] = [];
-  displayedColumns: string[] = [
-    'serviceName',
-    'amount',
-    'nextPaymentDate',
-    'frequency',
-    'status',
-    'actions',
-  ];
+  abonnementForm!: FormGroup; // Form for creating a recurring payment
+  walletId!: number; // Store the user's wallet ID
+  email: string = ''; // Store the user's email
+  eCarte: any; // Store the user's ECarte details
+  errorMessage: string = ''; // Error message to display in case of failure
+  successMessage: string = ''; // Success message to display when successful
+  abonnements: any[] = []; // List of recurring payments to display
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private abonnementsService: AbonnementsService, // Service for recurring payment API calls
+    private eCarteService: ECarteService, // Service for fetching ECarte
+    private usersService: UsersService // Service to fetch user details
+  ) {}
 
   ngOnInit(): void {
-    this.initializeForm();
-    this.loadAbonnements();
+    this.email = this.usersService.getUserEmail() || ''; // Fetch logged-in user's email
+    if (!this.email) {
+      this.errorMessage = 'Email not found. Please log in again.';
+      return;
+    }
+
+    this.initializeForm(); // Initialize the form
+    this.fetchECarte(); // Fetch the user's ECarte details
   }
 
-  initializeForm() {
+  // Initialize the form with validation
+  initializeForm(): void {
     this.abonnementForm = this.fb.group({
-      serviceName: ['', Validators.required],
-      amount: [0, [Validators.required, Validators.min(1)]],
-      frequency: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: [''],
+      senderUserId: [null, Validators.required], // Wallet ID (dynamically patched)
+      serviceName: ['', Validators.required], // Service name (e.g., Orange, Inwi)
+      amount: [0, [Validators.required, Validators.min(1)]], // Amount (must be > 0)
+      frequency: ['', Validators.required], // Frequency (e.g., Monthly, Weekly)
+      startDate: ['', Validators.required], // Start date of the recurring payment
+      endDate: ['', Validators.required], // End date
     });
   }
 
-  loadAbonnements() {
-    // Fetch abonnements from backend (replace with real API)
-    this.abonnements = [
-      {
-        serviceName: 'Maroc Telecom',
-        amount: 100,
-        nextPaymentDate: new Date(),
-        frequency: 'Mensuel',
-        status: 'Actif',
+  // Fetch the user's ECarte details
+  fetchECarte(): void {
+    this.eCarteService.getECarteByEmail(this.email).subscribe({
+      next: (data) => {
+        this.eCarte = data;
+        if (this.eCarte && this.eCarte.walletId) {
+          this.walletId = this.eCarte.walletId; // Extract wallet ID from the ECarte
+          this.abonnementForm.patchValue({ senderUserId: this.walletId }); // Patch wallet ID into the form
+          this.errorMessage = ''; // Clear any error messages
+        } else {
+          this.errorMessage = 'Wallet ID not found in ECarte.';
+        }
       },
-      {
-        serviceName: 'Orange',
-        amount: 50,
-        nextPaymentDate: new Date(),
-        frequency: 'Mensuel',
-        status: 'Actif',
+      error: (err) => {
+        this.errorMessage = 'Error fetching ECarte. Please ensure you have a valid ECarte.';
+        console.error('Error fetching ECarte:', err);
       },
-    ];
+    });
   }
 
-  submitAbonnement() {
-    const abonnement = this.abonnementForm.value;
-    abonnement.nextPaymentDate = abonnement.startDate; // Set the next payment date to the start date
-    abonnement.status = 'Actif';
+  // Submit the form to create a recurring payment
+  submitAbonnement(): void {
+    if (this.abonnementForm.invalid || !this.walletId) {
+      this.errorMessage = 'Please fill all the fields correctly.';
+      alert(this.errorMessage); // Show an alert for errors
+      return;
+    }
 
-    this.abonnements.push(abonnement);
-    alert('Abonnement ajouté avec succès!');
+    const payload = this.abonnementForm.value; // Get form data
+    console.log('Payload to send:', payload);
+
+    this.abonnementsService.addRecurringPayment(payload).subscribe({
+      next: (response: string) => {
+        this.successMessage = response; // Directly set the backend response message
+        this.errorMessage = '';
+        alert('Recurring payment created successfully!'); // Show success message
+        this.abonnementForm.reset(); // Reset the form
+        this.abonnementForm.patchValue({ senderUserId: this.walletId }); // Retain wallet ID
+      },
+      error: (error) => {
+        this.errorMessage = error.error?.message || 'Error creating recurring payment.';
+        this.successMessage = '';
+        console.error('Error creating recurring payment:', error);
+        alert(this.errorMessage); // Show an alert for errors
+      },
+    });
+  }
+
+
+  // Reset the form
+  cancelAbonnement(): void {
     this.abonnementForm.reset();
-  }
-
-  cancelAbonnement() {
-    this.abonnementForm.reset();
-  }
-
-  editAbonnement(abonnement: any) {
-    this.abonnementForm.patchValue(abonnement);
-  }
-
-  deleteAbonnement(id: number) {
-    this.abonnements = this.abonnements.filter((abonnement) => abonnement.id !== id);
-    alert('Abonnement supprimé avec succès!');
+    this.abonnementForm.patchValue({ senderUserId: this.walletId }); // Retain wallet ID
+    this.errorMessage = '';
+    this.successMessage = '';
   }
 }

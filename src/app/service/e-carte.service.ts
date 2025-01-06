@@ -28,7 +28,7 @@ export class ECarteService {
     return this.http.post('http://localhost:1011/api/ecarte/by-email', { email });
   }
 
-  private apiUrl = 'http://localhost:1011/api/ecarte/transaction'; // Remplacez par l'URL de votre backend
+  private apiUrl = 'http://localhost:1011/api/ecarte/transaction';
 
 
   doTransaction(payload: any): Observable<string> {
