@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 })
 export class UsersService {
 
-  private BASE_URL = "http://localhost:8222";
-  private apiUrl = 'http://localhost:8222/users/admin'; // Base URL for your API
+  private BASE_URL = "http://localhost:1010";
+  private apiUrl = 'http://localhost:1010/users/admin'; // Base URL for your API
 
   private apiUrls = 'http://localhost:1010/api/creanciers'; // Base URL of your backend API
 
@@ -36,7 +36,7 @@ export class UsersService {
   private isLocalStorageAvailable(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
-  
+
 
   toggleLockUser(userId: number, lock: boolean): Observable<any> {
     const endpoint = lock ? `/lock/${userId}` : `/unlock/${userId}`;
@@ -216,7 +216,7 @@ export class UsersService {
     }
     return null;
   }
-  
+
   changePassword(oldPassword: string, newPassword: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -230,5 +230,5 @@ export class UsersService {
 
     return this.http.post(`${this.BASE_URL}/users/change-password`, body, { headers });
   }
-  
+
 }
