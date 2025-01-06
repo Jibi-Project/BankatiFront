@@ -22,6 +22,10 @@ import { AddclientComponent } from './agent/addclient/addclient.component';
 import { CryptoService } from './service/crypto.service';
 import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
 import { DashboardComponent } from './agent/dashboard/dashboard.component';
+import { AbonnementsComponent } from './abonnements/abonnements.component';
+
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -45,9 +49,8 @@ const routes: Routes = [
   {path:"ecarte" ,component:CarteDisplayComponent},
   {path:"add",component:AddclientComponent},
   {path:"cryptoConvert",component:CryptoconvertComponent},
-  {path:"dashboard",component:DashboardComponent}
-
-
+  {path:"dashboard",component:DashboardComponent},
+  { path:"abonnements",component: AbonnementsComponent },
 ];
 
 @NgModule({

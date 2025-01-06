@@ -50,6 +50,9 @@ import { AddclientComponent } from './agent/addclient/addclient.component';
 import { CryptoconvertComponent } from './client/cryptoconvert/cryptoconvert.component';
 import { DashboardComponent } from './agent/dashboard/dashboard.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AbonnementsComponent } from './abonnements/abonnements.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AddclientComponent,
     CryptoconvertComponent,
     DashboardComponent,
-    
+    AbonnementsComponent
+
   ],
   imports: [
     BrowserModule,
@@ -103,8 +107,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatSortModule,
     MatInputModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatOptionModule,
+
+
   ],
   providers: [
     UsersService,  // Fournir le service d'utilisateur pour l'authentification
