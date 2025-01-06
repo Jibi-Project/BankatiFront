@@ -24,28 +24,13 @@
           </ng-template>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/listeClient">Voir Détails</button>
-        </mat-card-actions>
+          <button mat-raised-button class="brown-button" routerLink="/listeClient">
+            Voir Détails
+          </button>
+                  </mat-card-actions>
       </mat-card>
 
-      <mat-card class="user-card">
-        <mat-card-header>
-          <mat-card-title>Montant moyen des transactions</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 *ngIf="userCount !== null; else loading">{{ averageAmount | number: '1.2-2' }} DH</h2>
-          <ng-template #loading>
-            <mat-progress-spinner
-              diameter="50"
-              mode="indeterminate"
-              color="accent"
-            ></mat-progress-spinner>
-          </ng-template>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" routerLink="/comptes">Voir Détails</button>
-        </mat-card-actions>
-      </mat-card>
+  
     </div>
 
     <!-- Transactions Chart -->

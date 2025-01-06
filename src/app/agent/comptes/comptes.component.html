@@ -6,60 +6,68 @@
     <app-leftnav></app-leftnav>
   </mat-sidenav>
 
-  <h2>Liste des comptes</h2>
+  <!-- Conteneur principal -->
+  <div class="container">
+    <div class="table-container">
+      <!-- En-tête de la table -->
+      <div class="special-header">
+        <span class="table-title">Liste des Comptes</span>
+      </div>
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search">
+      </mat-form-field>
 
-  <div class="table-container">
-    <mat-form-field appearance="outline">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search">
-    </mat-form-field>
+      <!-- Table -->
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8 custom-table">
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
 
-    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-      <!-- ID Column -->
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
 
-      <!-- Email Column -->
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-      </ng-container>
+        <!-- Nom Column -->
+        <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+          <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
+        </ng-container>
 
-      <!-- Nom Column -->
-      <ng-container matColumnDef="nom">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
-        <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
-      </ng-container>
+        <!-- Prenom Column -->
+        <ng-container matColumnDef="prenom">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Prénom</th>
+          <td mat-cell *matCellDef="let element">{{ element.prenom }}</td>
+        </ng-container>
 
-      <!-- Prenom Column -->
-      <ng-container matColumnDef="prenom">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Prenom</th>
-        <td mat-cell *matCellDef="let element">{{ element.prenom }}</td>
-      </ng-container>
+        <!-- Solde Column -->
+        <ng-container matColumnDef="balance">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde (DH)</th>
+          <td mat-cell *matCellDef="let element">{{ element.balance | currency:'MAD' }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="balance">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Solde en(DH)</th>
-        <td mat-cell *matCellDef="let element">{{ element.balance }}</td>
-      </ng-container>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button class="edit-button" (click)="onEditBalance(element)">
+              Modifier
+            </button>
+          </td>
+        </ng-container>
 
-    
+        <!-- Table Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-button class="edit-button" (click)="onEditBalance(element)">
-            Modifier
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+      <!-- Pagination -->
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </div>
   </div>
 </mat-sidenav-container>

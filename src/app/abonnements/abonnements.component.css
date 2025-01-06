@@ -1,52 +1,52 @@
 .abonnements-container {
-  padding: 20px;
-  background-color: #f5f5f5; /* Light background */
-}
-
-h1 {
-  color: #ffa500; /* Orange color for title */
-  text-align: center;
-  font-weight: bold;
-}
-
-.abonnement-card {
-  width: 60%;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.form-field {
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.form-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.subscriptions-list {
-  margin-top: 20px;
-  padding: 20px;
-}
-
-table {
-  width: 100%;
-}
-.soumettre-button {
-  background-color: #ffa500; /* Orange/Yellow color */
-  color: white;
-  font-weight: bold;
-  border: none;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease;
-}
-
-.soumettre-button:hover {
-  background-color: #ff8c00; /* Darker orange on hover */
-}
+    padding: 20px;
+    background-color: #f5f5f5; /* Light background */
+  }
+  
+  h1 {
+    color: #ffa500; /* Orange color for title */
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .abonnement-card {
+    width: 60%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .subscriptions-list {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .soumettre-button {
+    background-color: #ffa500; /* Orange/Yellow color */
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .soumettre-button:hover {
+    background-color: #ff8c00; /* Darker orange on hover */
+  }
