@@ -1,27 +1,79 @@
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
 .transcation-history-container {
-    padding: 20px;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+mat-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+h2 {
+  color: #ff5722;
+  margin-bottom: 16px;
+}
+
+p {
+  margin: 4px 0;
+}
+
+.error-message {
+  color: #e53935;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.mat-header-cell {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #ff9800;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #fff3e0;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #ffe0b2;
+}
+
+.mat-row:hover {
+  background-color: #ffcc80;
+}
+
+.mat-cell {
+  color: #212121;
+}
+
+.mat-table {
+  margin-top: 20px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+mat-card {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
   }
-  
-  mat-card {
-    margin-bottom: 20px;
-    padding: 16px;
-  }
-  
-  .error-message {
-    color: red;
-    font-weight: bold;
-  }
-  
-  mat-table {
-    width: 100%;
-  }
-  
-  mat-header-cell, mat-cell {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  mat-header-cell {
-    font-weight: bold;
-  }
-  
+}

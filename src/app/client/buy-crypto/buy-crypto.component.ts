@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CryptoService } from '../../service/crypto.service';
 import { UsersService } from '../../service/users.service';
+import { WalletService } from '../../service/wallet.service';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -15,8 +16,13 @@ export class BuyCryptoComponent implements OnInit {
   result: any = null;
   profileInfo: any = null; // Store profile info here
   errorMessage: string = '';
+  action: string = 'buy'; 
+    message: string = '';
 
-  constructor(private cryptoService: CryptoService, private userService: UsersService) {}
+
+  constructor(private cryptoService: CryptoService, private userService: UsersService,
+    private walletService:WalletService
+  ) {}
 
   ngOnInit(): void {
     this.loadUserProfile();
@@ -68,6 +74,9 @@ export class BuyCryptoComponent implements OnInit {
         next: (data) => {
           this.result = data;
           console.log('Crypto bought successfully:', data);
+          // Update the wallet balance
+          this.updateBalance();
+
         },
         error: (err) => {
           console.error('Error buying crypto:', err);
@@ -77,6 +86,24 @@ export class BuyCryptoComponent implements OnInit {
     } else {
       console.warn('Missing fields for buying crypto.');
       this.errorMessage = 'Please fill in all fields.';
+    }
+  }
+
+  updateBalance() {
+    if (this.userId && this.amount !== null) {
+      this.walletService.updateBalance(this.userId, this.action, this.amount).subscribe({
+        next: (response) => {
+          this.message = response;
+          console.log('Wallet balance updated successfully:', response);
+        },
+        error: (error) => {
+          console.error('Error updating wallet balance:', error);
+          this.message = error.error || 'Error updating balance';
+        },
+      });
+    } else {
+      console.warn('Cannot update balance: Missing userId or amount.');
+      this.errorMessage = 'Cannot update balance.';
     }
   }
 }
