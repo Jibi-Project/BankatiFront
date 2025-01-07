@@ -25,6 +25,7 @@ import { DashboardComponent } from './agent/dashboard/dashboard.component';
 import { TranscationHistoryComponent } from './client/transcation-history/transcation-history.component';
 import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
 import { AbonnementsComponent } from './abonnements/abonnements.component';
+import { SellCryptoComponent } from './client/sell-crypto/sell-crypto.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -51,7 +52,8 @@ const routes: Routes = [
   {path:"dashboard",component:DashboardComponent},
   {path:"history",component:TranscationHistoryComponent},
   {path:"buyCrypto",component:BuyCryptoComponent},
-  {path:"abonnements",component:AbonnementsComponent}
+  {path:"abonnements",component:AbonnementsComponent},
+  {path:"Sell",component:SellCryptoComponent}
 
 
 ];

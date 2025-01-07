@@ -20,5 +20,10 @@ export class CryptoService {
   buyCrypto(request: { userId: number; crypto: string; fiat: string; amount: number }): Observable<any> {
     return this.http.post(`${this.baseUrl}/buy`, request);
   }
+
+  sellCrypto(request: { userId: number; crypto: string; fiat: string; amount: number }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/sell`, request);
+  }
+  
   
 }

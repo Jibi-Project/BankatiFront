@@ -1,0 +1,36 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+
+<div class="container">
+    <h1 class="title">Sell Cryptocurrency</h1>
+  
+    <div class="form-group">
+      <label for="crypto">Cryptocurrency:</label>
+      <input id="crypto" type="text" [(ngModel)]="crypto" placeholder="e.g., bitcoin" class="input" />
+    </div>
+  
+    <div class="form-group">
+      <label for="fiat">Fiat Currency:</label>
+      <input id="fiat" type="text" [(ngModel)]="fiat" placeholder="e.g., usd" class="input" />
+    </div>
+  
+    <div class="form-group">
+      <label for="amount">Amount (Fiat):</label>
+      <input id="amount" type="number" [(ngModel)]="amount" placeholder="e.g., 1000" class="input" />
+    </div>
+  
+    <button (click)="buyCrypto()" class="button">Sell</button>
+  
+    <div *ngIf="result" class="result">
+      <p *ngIf="result.cryptoAmount">You will sell: {{ result.fiatAmount }} crypto at rate: {{ result.rate }}</p>
+      <p *ngIf="result.error" class="error">{{ result.error }}</p>
+    </div>
+  </div>
+
+</mat-sidenav-container>
