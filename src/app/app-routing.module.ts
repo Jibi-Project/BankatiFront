@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './user-auth/login/login.component';
 import { RegisterComponent } from './user-auth/register/register.component';
@@ -26,6 +26,7 @@ import { TranscationHistoryComponent } from './client/transcation-history/transc
 import { BuyCryptoComponent } from './client/buy-crypto/buy-crypto.component';
 import { AbonnementsComponent } from './abonnements/abonnements.component';
 import { SellCryptoComponent } from './client/sell-crypto/sell-crypto.component';
+import { CryptoTransactionsComponent } from './client/crypto-transactions/crypto-transactions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -53,7 +54,8 @@ const routes: Routes = [
   {path:"history",component:TranscationHistoryComponent},
   {path:"buyCrypto",component:BuyCryptoComponent},
   {path:"abonnements",component:AbonnementsComponent},
-  {path:"Sell",component:SellCryptoComponent}
+  {path:"Sell",component:SellCryptoComponent},
+  {path:"cryptoHistory",component:CryptoTransactionsComponent}
 
 
 ];

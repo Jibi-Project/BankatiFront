@@ -1,0 +1,60 @@
+<app-header (toggleSidebarForMe)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+<br/>
+
+<div class="transaction-table">
+    <!-- Table Title -->
+    <h2 class="table-title">Historique de Cryptomonnaies</h2>
+  
+    <!-- Angular Material Table -->
+    <mat-table [dataSource]="transactions" class="mat-elevation-z8">
+  
+      <!-- Crypto Name Column -->
+      <ng-container matColumnDef="cryptoName">
+        <mat-header-cell *matHeaderCellDef> Nom du Crypto  </mat-header-cell>
+        <mat-cell *matCellDef="let transaction"> {{transaction.cryptoName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef> montant </mat-header-cell>
+        <mat-cell *matCellDef="let transaction"> 
+          {{ transaction.amount | number:'1.6-6' }} 
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Transaction Type Column -->
+      <ng-container matColumnDef="transactionType">
+        <mat-header-cell *matHeaderCellDef>  Type de Transaction </mat-header-cell>
+        <mat-cell *matCellDef="let transaction">
+          <span [ngClass]="transaction.transactionType === 'BUY' ? 'buy' : 'sell'">
+            {{transaction.transactionType}}
+          </span>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Transaction Date Column -->
+      <ng-container matColumnDef="transactionDate">
+        <mat-header-cell *matHeaderCellDef> Date de Transaction  </mat-header-cell>
+        <mat-cell *matCellDef="let transaction"> {{transaction.transactionDate}} </mat-cell>
+      </ng-container>
+  
+      <!-- Rate Column -->
+      <ng-container matColumnDef="rate">
+        <mat-header-cell *matHeaderCellDef> Rate </mat-header-cell>
+        <mat-cell *matCellDef="let transaction"> {{transaction.rate | currency}} </mat-cell>
+      </ng-container>
+  
+      <!-- Header and Rows -->
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  
+
+</mat-sidenav-container>

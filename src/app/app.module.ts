@@ -56,6 +56,7 @@ import { BalanceDialogComponent } from './agent/balance-dialog/balance-dialog.co
 import { AbonnementsComponent } from './abonnements/abonnements.component';
 import { MatSelectModule } from '@angular/material/select';
 import { SellCryptoComponent } from './client/sell-crypto/sell-crypto.component';
+import { CryptoTransactionsComponent } from './client/crypto-transactions/crypto-transactions.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { SellCryptoComponent } from './client/sell-crypto/sell-crypto.component'
     BalanceDialogComponent,
     AbonnementsComponent,
     SellCryptoComponent,
+    CryptoTransactionsComponent,
     
   ],
   imports: [

@@ -1,0 +1,31 @@
+.transaction-table {
+    margin: 20px;
+  }
+  
+  .table-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #3f51b5; /* Primary color from Angular Material theme */
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: center;
+  }
+  
+  .buy {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .sell {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .mat-elevation-z8 {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
